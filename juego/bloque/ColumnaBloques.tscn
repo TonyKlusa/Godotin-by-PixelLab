@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://juego/bloque/Bloques.tscn" type="PackedScene" id=1]
+[ext_resource path="res://juego/bloque/bloquetierra.tscn" type="PackedScene" id=2]
+
+[node name="ColumnaBloques" type="Spatial"]
+
+[node name="Bloque" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0 )
+collision_layer = 4
+
+[node name="blockDirt" parent="." instance=ExtResource( 2 )]
+collision_layer = 4
+
+[node name="blockDirt2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00038, 0 )
+collision_layer = 4
+
+[node name="blockDirt3" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
+collision_layer = 4
+
+[node name="blockDirt4" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0 )
+collision_layer = 4
