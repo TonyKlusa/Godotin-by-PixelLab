@@ -2,7 +2,7 @@
 
 [ext_resource path="res://juego/bloque/ColumnaBloques.tscn" type="PackedScene" id=1]
 [ext_resource path="res://juego/bloque/BloqueHexagono.tscn" type="PackedScene" id=2]
-[ext_resource path="res://juego/player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://juego/player/Godotin.tscn" type="PackedScene" id=3]
 [ext_resource path="res://juego/bloque/BloqueLargo.tscn" type="PackedScene" id=4]
 [ext_resource path="res://juego/bloque/BloquePendienteMedia.tscn" type="PackedScene" id=5]
 [ext_resource path="res://juego/bloque/MedioBloque.tscn" type="PackedScene" id=6]
@@ -35,14 +35,14 @@ mesh = SubResource( 1 )
 material/0 = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Spatial/Piso"]
-transform = Transform( 27.5, 0, 0, 0, 0.001, 0, 0, 0, 25, 0, -0.682017, 0 )
+transform = Transform( 27.5, 0, 0, 0, 0.001, 0, 0, 0, 25, 0, 0.00403559, 0 )
 shape = SubResource( 3 )
 
 [node name="BloqueLargo" parent="Spatial" instance=ExtResource( 4 )]
 collision_layer = 2
 
 [node name="BloquePendiente" parent="Spatial" instance=ExtResource( 7 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.03389, 0, 2.09811 )
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.03389, -0.0157725, 2.09811 )
 collision_layer = 2
 
 [node name="MedioBloque" parent="Spatial" instance=ExtResource( 6 )]
@@ -664,6 +664,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3151, -0.21356, 1.99801 )
 [node name="ColumnaBloques50" parent="Spatial/Bordes/Sur" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3151, -0.21356, 0.998007 )
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.61722, 0, 0 )
+[node name="Godotin" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.61722, 4.24483, 0 )
 collision_mask = 6
+gravedad = 0.1
