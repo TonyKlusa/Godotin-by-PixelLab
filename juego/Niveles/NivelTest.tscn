@@ -19,25 +19,24 @@ extents = Vector3( 1, 0.65331, 1.0226 )
 
 [node name="NivelTest" type="Spatial"]
 
-[node name="Camera" type="Camera" parent="."]
-transform = Transform( 0.99875, -0.0428682, 0.0257169, 0.0197925, 0.811491, 0.58403, -0.0459054, -0.582791, 0.811325, 0, 4, 9.19481 )
-
-[node name="StaticBody" type="StaticBody" parent="."]
-
-[node name="MeshInstance" type="MeshInstance" parent="StaticBody"]
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
-
-[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
-transform = Transform( 27.5, 0, 0, 0, 0.001, 0, 0, 0, 25, 0, -0.682017, 0 )
-shape = SubResource( 3 )
-
 [node name="DirectionalLight" type="DirectionalLight" parent="."]
 transform = Transform( 0.919703, 0.366473, -0.140868, -0.327728, 0.914162, 0.238543, 0.216196, -0.173223, 0.960861, 0, 11.4257, 5.24143 )
 light_color = Color( 0.901961, 0.94902, 0.0588235, 1 )
 light_energy = 0.706
 
 [node name="Spatial" type="Spatial" parent="."]
+
+[node name="Piso" type="StaticBody" parent="Spatial"]
+collision_layer = 4
+collision_mask = 6
+
+[node name="MeshInstance" type="MeshInstance" parent="Spatial/Piso"]
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Spatial/Piso"]
+transform = Transform( 27.5, 0, 0, 0, 0.001, 0, 0, 0, 25, 0, -0.682017, 0 )
+shape = SubResource( 3 )
 
 [node name="BloqueLargo" parent="Spatial" instance=ExtResource( 4 )]
 collision_layer = 2

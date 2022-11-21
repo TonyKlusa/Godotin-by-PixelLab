@@ -1,4 +1,6 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://juego/player/BrazoCamara.gd" type="Script" id=1]
 
 [sub_resource type="CapsuleShape" id=1]
 radius = 0.4
@@ -1647,7 +1649,7 @@ nodes/state/node = SubResource( 21 )
 nodes/state/position = Vector2( 440, 0 )
 nodes/walk/node = SubResource( 22 )
 nodes/walk/position = Vector2( -40, -240 )
-node_connections = [ "walk", 0, "Animation", "walk", 1, "Animation 2", "air_dir", 0, "Animation 3", "air_dir", 1, "Animation 4", "gun", 0, "state", "gun", 1, "Animation 5", "scale", 0, "walk", "state", 0, "scale", "state", 1, "air_dir", "output", 0, "gun" ]
+node_connections = [ "gun", 0, "state", "gun", 1, "Animation 5", "air_dir", 0, "Animation 3", "air_dir", 1, "Animation 4", "walk", 0, "Animation", "walk", 1, "Animation 2", "scale", 0, "walk", "state", 0, "scale", "state", 1, "air_dir", "output", 0, "gun" ]
 
 [node name="Player" type="KinematicBody"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
@@ -1820,3 +1822,11 @@ parameters/gun/blend_amount = 0
 parameters/scale/scale = 1.5
 parameters/state/current = 0
 parameters/walk/blend_amount = 0.0
+
+[node name="SpringArm" type="SpringArm" parent="."]
+spring_length = 12.0
+script = ExtResource( 1 )
+
+[node name="CamaraPlayer)" type="Camera" parent="SpringArm"]
+transform = Transform( 2, 0, 0, 0, 1.91252, 0.585044, 0, -0.585044, 1.91252, 0, 2.98995, 16.3796 )
+current = true
