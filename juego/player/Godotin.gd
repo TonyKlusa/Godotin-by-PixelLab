@@ -13,6 +13,8 @@ export var gravedad: float = 9.8
 export var impulso: float = 50.0
 export var fuerza_salto: float = 18.0
 
+
+
 var vector_snap: Vector3 = Vector3.DOWN #para vector snap sobre pendientes
 var movimiento: Vector3 = Vector3. ZERO
 var salto_interrumpido = false

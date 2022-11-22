@@ -1649,7 +1649,7 @@ nodes/state/node = SubResource( 21 )
 nodes/state/position = Vector2( 440, 0 )
 nodes/walk/node = SubResource( 22 )
 nodes/walk/position = Vector2( -40, -240 )
-node_connections = [ "scale", 0, "walk", "state", 0, "scale", "state", 1, "air_dir", "output", 0, "gun", "air_dir", 0, "Animation 3", "air_dir", 1, "Animation 4", "walk", 0, "Animation", "walk", 1, "Animation 2", "gun", 0, "state", "gun", 1, "Animation 5" ]
+node_connections = [ "scale", 0, "walk", "state", 0, "scale", "state", 1, "air_dir", "output", 0, "gun", "gun", 0, "state", "gun", 1, "Animation 5", "air_dir", 0, "Animation 3", "air_dir", 1, "Animation 4", "walk", 0, "Animation", "walk", 1, "Animation 2" ]
 
 [node name="Godotin" type="KinematicBody"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
@@ -1829,8 +1829,12 @@ parameters/state/current = 0
 parameters/walk/blend_amount = 0.0
 
 [node name="BrazoCamara" type="SpringArm" parent="."]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
+collision_mask = 4
 spring_length = 12.0
 script = ExtResource( 1 )
+rango_rotacion_camara_x = Vector2( -45, -15 )
+camara_y_invertida = true
 
 [node name="CamaraPlayer)" type="Camera" parent="BrazoCamara"]
 transform = Transform( 2, 0, 0, 0, 1.91252, 0.585044, 0, -0.585044, 1.91252, 0, 2.98995, 16.3796 )
