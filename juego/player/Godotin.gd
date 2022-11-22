@@ -4,6 +4,7 @@ class_name Godotin
 extends KinematicBody
 
 onready var brazo_camara: SpringArm = $BrazoCamara
+onready var armadura: Spatial = $Armadura
 
 const direccion_arriba: Vector3 = Vector3.UP
 
@@ -12,9 +13,11 @@ export var gravedad: float = 9.8
 export var impulso: float = 50.0
 export var fuerza_salto: float = 18.0
 
+var vector_snap: Vector3 = Vector3.DOWN #para vector snap sobre pendientes
 var movimiento: Vector3 = Vector3. ZERO
 var salto_interrumpido = false
 var saltando = false
+
 
 func _process(delta: float) -> void:
 	brazo_camara.translation =  translation
@@ -22,7 +25,10 @@ func _process(delta: float) -> void:
 func _physics_process (delta: float) -> void:
 	movimiento_vertical ()
 	movimiento_horizontal()
-	movimiento = move_and_slide (movimiento, direccion_arriba)
+	movimiento = move_and_slide_with_snap (movimiento, vector_snap, direccion_arriba, true)
+	var direccion_vista_player = Vector2(movimiento.z, movimiento.x)
+	if direccion_vista_player. length ( ) > 0:
+		armadura.rotation.y = direccion_vista_player.angle ()
 
 func movimiento_vertical() -> void:
 	if not is_on_floor() :
@@ -32,12 +38,20 @@ func movimiento_vertical() -> void:
 		salto_interrumpido = true
 	else:
 		saltando = false
+	var tocando_suelo:bool = is_on_floor() and vector_snap == Vector3.ZERO
 	var inicio_salto: bool = is_on_floor () and Input.is_action_just_pressed ("saltar")
+	
 	if inicio_salto:
+		vector_snap = Vector3.ZERO
 		saltando= true
 		salto_interrumpido=false
+	elif tocando_suelo:
+		vector_snap = Vector3.DOWN
+		
+		
 	if movimiento.y >= velocidad_max.y:
 		salto_interrumpido= true
+		
 	if Input. is_action_pressed ("saltar") and saltando and not salto_interrumpido:
 		movimiento.y += fuerza_salto
 
