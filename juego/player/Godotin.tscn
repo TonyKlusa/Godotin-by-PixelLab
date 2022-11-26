@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://juego/player/BrazoCamara.gd" type="Script" id=1]
 [ext_resource path="res://juego/player/Godotin.gd" type="Script" id=2]
+[ext_resource path="res://juego/player/ArbolAnimacion.gd" type="Script" id=3]
 
 [sub_resource type="CylinderShape" id=24]
 height = 2.05232
@@ -1596,60 +1597,63 @@ tracks/26/imported = false
 tracks/26/enabled = true
 tracks/26/keys = PoolRealArray( 0, 1, 5.17831e-08, 0.00292331, 0.204329, 3.25963e-09, -2.17324e-11, 3.00563e-10, 1, 1, 1, 1, 1.25, 1, 5.17831e-08, 0.00292331, 0.204329, 3.25963e-09, -2.17324e-11, 3.00563e-10, 1, 1, 1, 1 )
 
-[sub_resource type="AnimationNodeAnimation" id=13]
-animation = "walk-cycle"
+[sub_resource type="AnimationNodeAnimation" id=25]
+animation = "run-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=30]
 animation = "jump-up-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=31]
 animation = "falling-cycle"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
-animation = "shooting_standing"
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "shooting"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=26]
 animation = "idle"
 
-[sub_resource type="AnimationNodeBlend2" id=18]
+[sub_resource type="AnimationNodeBlend2" id=35]
+filter_enabled = true
+filters = [ "Armadura/Skeleton:l-ARMCONTROL", "Armadura/Skeleton:l-ARMORIENT", "Armadura/Skeleton:l-arm", "Armadura/Skeleton:l-forearm", "Armadura/Skeleton:r-ARMCONTROL", "Armadura/Skeleton:r-ARMORIENT", "Armadura/Skeleton:r-arm", "Armadura/Skeleton:r-forearm" ]
 
-[sub_resource type="AnimationNodeBlend2" id=19]
+[sub_resource type="AnimationNodeBlend2" id=27]
 
-[sub_resource type="AnimationNodeTimeScale" id=20]
+[sub_resource type="AnimationNodeBlend2" id=32]
 
-[sub_resource type="AnimationNodeTransition" id=21]
+[sub_resource type="AnimationNodeTimeScale" id=28]
+
+[sub_resource type="AnimationNodeTransition" id=33]
 input_count = 2
-input_0/name = "on floor"
+xfade_time = 0.1
+input_0/name = "en_suelo"
 input_0/auto_advance = false
-input_1/name = "in air"
+input_1/name = "en_aire"
 input_1/auto_advance = false
 
-[sub_resource type="AnimationNodeBlend2" id=22]
-
-[sub_resource type="AnimationNodeBlendTree" id=23]
-graph_offset = Vector2( -529.385, -200.775 )
-nodes/Animation/node = SubResource( 17 )
-nodes/Animation/position = Vector2( -260, -280 )
-"nodes/Animation 2/node" = SubResource( 13 )
-"nodes/Animation 2/position" = Vector2( -260, -160 )
-"nodes/Animation 3/node" = SubResource( 14 )
-"nodes/Animation 3/position" = Vector2( -260, -40 )
-"nodes/Animation 4/node" = SubResource( 15 )
-"nodes/Animation 4/position" = Vector2( -260, 80 )
-"nodes/Animation 5/node" = SubResource( 16 )
-"nodes/Animation 5/position" = Vector2( -260, 200 )
-nodes/air_dir/node = SubResource( 18 )
-nodes/air_dir/position = Vector2( 140, 20 )
-nodes/gun/node = SubResource( 19 )
-nodes/gun/position = Vector2( 680, 140 )
-nodes/output/position = Vector2( 880, 140 )
-nodes/scale/node = SubResource( 20 )
-nodes/scale/position = Vector2( 180, -120 )
-nodes/state/node = SubResource( 21 )
-nodes/state/position = Vector2( 440, 0 )
-nodes/walk/node = SubResource( 22 )
-nodes/walk/position = Vector2( -40, -240 )
-node_connections = [ "scale", 0, "walk", "state", 0, "scale", "state", 1, "air_dir", "output", 0, "gun", "gun", 0, "state", "gun", 1, "Animation 5", "air_dir", 0, "Animation 3", "air_dir", 1, "Animation 4", "walk", 0, "Animation", "walk", 1, "Animation 2" ]
+[sub_resource type="AnimationNodeBlendTree" id=29]
+graph_offset = Vector2( 188.486, 120.965 )
+nodes/Animation/node = SubResource( 26 )
+nodes/Animation/position = Vector2( 77.8001, 34.8402 )
+"nodes/Animation 2/node" = SubResource( 25 )
+"nodes/Animation 2/position" = Vector2( -273.56, 154.36 )
+"nodes/Animation 3/node" = SubResource( 30 )
+"nodes/Animation 3/position" = Vector2( -80, 300 )
+"nodes/Animation 4/node" = SubResource( 31 )
+"nodes/Animation 4/position" = Vector2( -80, 420 )
+"nodes/Animation 5/node" = SubResource( 34 )
+"nodes/Animation 5/position" = Vector2( 609.432, 325.392 )
+nodes/MezclaDisparar/node = SubResource( 35 )
+nodes/MezclaDisparar/position = Vector2( 860, 160 )
+nodes/MezclaIdleCaminar/node = SubResource( 27 )
+nodes/MezclaIdleCaminar/position = Vector2( 260, 80 )
+nodes/MezclaSaltarCaer/node = SubResource( 32 )
+nodes/MezclaSaltarCaer/position = Vector2( 180, 300 )
+nodes/TimeScale/node = SubResource( 28 )
+nodes/TimeScale/position = Vector2( -80, 160 )
+nodes/TransicionSueloAire/node = SubResource( 33 )
+nodes/TransicionSueloAire/position = Vector2( 540, 140 )
+nodes/output/position = Vector2( 1120, 180 )
+node_connections = [ "output", 0, "MezclaDisparar", "MezclaSaltarCaer", 0, "Animation 3", "MezclaSaltarCaer", 1, "Animation 4", "MezclaIdleCaminar", 0, "Animation", "MezclaIdleCaminar", 1, "TimeScale", "TransicionSueloAire", 0, "MezclaIdleCaminar", "TransicionSueloAire", 1, "MezclaSaltarCaer", "TimeScale", 0, "Animation 2", "MezclaDisparar", 0, "TransicionSueloAire", "MezclaDisparar", 1, "Animation 5" ]
 
 [node name="Godotin" type="KinematicBody"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
@@ -1670,6 +1674,7 @@ shape = SubResource( 24 )
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
 
 [node name="Skeleton" type="Skeleton" parent="Armadura"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 bones/0/name = "MASTER"
 bones/0/parent = -1
 bones/0/rest = Transform( 1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, 0, -0.011277, 0 )
@@ -1809,7 +1814,7 @@ bones/26/bound_children = [  ]
 [node name="Robot" type="MeshInstance" parent="Armadura/Skeleton"]
 mesh = SubResource( 4 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Animaciones" type="AnimationPlayer" parent="."]
 anims/default = SubResource( 5 )
 anims/falling-cycle = SubResource( 6 )
 anims/idle = SubResource( 7 )
@@ -1818,15 +1823,6 @@ anims/run-cycle = SubResource( 9 )
 anims/shooting = SubResource( 10 )
 anims/shooting_standing = SubResource( 11 )
 anims/walk-cycle = SubResource( 12 )
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 23 )
-anim_player = NodePath("../AnimationPlayer")
-parameters/air_dir/blend_amount = 0.0
-parameters/gun/blend_amount = 0
-parameters/scale/scale = 1.5
-parameters/state/current = 0
-parameters/walk/blend_amount = 0.0
 
 [node name="BrazoCamara" type="SpringArm" parent="."]
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
@@ -1839,3 +1835,21 @@ camara_y_invertida = true
 [node name="CamaraPlayer)" type="Camera" parent="BrazoCamara"]
 transform = Transform( 2, 0, 0, 0, 1.91252, 0.585044, 0, -0.585044, 1.91252, 0, 2.98995, 16.3796 )
 current = true
+
+[node name="ArbolAnimacion" type="AnimationTree" parent="."]
+tree_root = SubResource( 29 )
+anim_player = NodePath("../Animaciones")
+active = true
+parameters/MezclaDisparar/blend_amount = 1.0
+parameters/MezclaIdleCaminar/blend_amount = 0.0
+parameters/MezclaSaltarCaer/blend_amount = 0.0
+parameters/TimeScale/scale = 1.0
+parameters/TransicionSueloAire/current = 0
+script = ExtResource( 3 )
+
+[node name="Linterna" type="SpotLight" parent="."]
+transform = Transform( 2, 0, 0, 0, -1.99945, -0.0469802, 0, 0.0469802, -1.99945, -0.542328, 1.22254, 0.925482 )
+light_color = Color( 0.94902, 0.980392, 0.0156863, 1 )
+light_energy = 0.0
+spot_range = 7.205
+spot_angle = 12.0
