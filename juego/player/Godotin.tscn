@@ -1631,7 +1631,7 @@ input_1/name = "en_aire"
 input_1/auto_advance = false
 
 [sub_resource type="AnimationNodeBlendTree" id=29]
-graph_offset = Vector2( 188.486, 120.965 )
+graph_offset = Vector2( -110.164, 80.4418 )
 nodes/Animation/node = SubResource( 26 )
 nodes/Animation/position = Vector2( 77.8001, 34.8402 )
 "nodes/Animation 2/node" = SubResource( 25 )
@@ -1653,7 +1653,7 @@ nodes/TimeScale/position = Vector2( -80, 160 )
 nodes/TransicionSueloAire/node = SubResource( 33 )
 nodes/TransicionSueloAire/position = Vector2( 540, 140 )
 nodes/output/position = Vector2( 1120, 180 )
-node_connections = [ "output", 0, "MezclaDisparar", "MezclaSaltarCaer", 0, "Animation 3", "MezclaSaltarCaer", 1, "Animation 4", "MezclaIdleCaminar", 0, "Animation", "MezclaIdleCaminar", 1, "TimeScale", "TransicionSueloAire", 0, "MezclaIdleCaminar", "TransicionSueloAire", 1, "MezclaSaltarCaer", "TimeScale", 0, "Animation 2", "MezclaDisparar", 0, "TransicionSueloAire", "MezclaDisparar", 1, "Animation 5" ]
+node_connections = [ "output", 0, "MezclaDisparar", "MezclaIdleCaminar", 0, "Animation", "MezclaIdleCaminar", 1, "TimeScale", "MezclaDisparar", 0, "TransicionSueloAire", "MezclaDisparar", 1, "Animation 5", "TimeScale", 0, "Animation 2", "TransicionSueloAire", 0, "MezclaIdleCaminar", "TransicionSueloAire", 1, "MezclaSaltarCaer", "MezclaSaltarCaer", 0, "Animation 3", "MezclaSaltarCaer", 1, "Animation 4" ]
 
 [node name="Godotin" type="KinematicBody"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
@@ -1674,7 +1674,6 @@ shape = SubResource( 24 )
 transform = Transform( 0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0 )
 
 [node name="Skeleton" type="Skeleton" parent="Armadura"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
 bones/0/name = "MASTER"
 bones/0/parent = -1
 bones/0/rest = Transform( 1, 0, 0, 0, 7.54979e-08, 1, 0, -1, 7.54979e-08, 0, -0.011277, 0 )
@@ -1840,7 +1839,7 @@ current = true
 tree_root = SubResource( 29 )
 anim_player = NodePath("../Animaciones")
 active = true
-parameters/MezclaDisparar/blend_amount = 1.0
+parameters/MezclaDisparar/blend_amount = 0.0
 parameters/MezclaIdleCaminar/blend_amount = 0.0
 parameters/MezclaSaltarCaer/blend_amount = 0.0
 parameters/TimeScale/scale = 1.0

@@ -18,17 +18,23 @@ _global_script_classes=[ {
 "class": "Godotin",
 "language": "GDScript",
 "path": "res://juego/player/Godotin.gd"
+}, {
+"base": "Area",
+"class": "MonedaDorada",
+"language": "GDScript",
+"path": "res://juego/items/MonedaDorada.gd"
 } ]
 _global_script_class_icons={
 "ArbolAnimacionPlayer": "",
-"Godotin": ""
+"Godotin": "",
+"MonedaDorada": ""
 }
 
 [application]
 
 config/name="Godotin"
 run/main_scene="res://juego/Niveles/NivelTest.tscn"
-config/icon="res://icon.png"
+config/icon="res://icono.png"
 
 [display]
 
