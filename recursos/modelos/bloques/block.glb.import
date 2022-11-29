@@ -12,7 +12,7 @@ dest_files=[ "res://.import/block.glb-b1383344d37cef472d51b001d55f3166.scn" ]
 [params]
 
 nodes/root_type="RigidBody"
-nodes/root_name="Bloque"
+nodes/root_name="BloqueCesped"
 nodes/root_scale=1.0
 nodes/custom_script=""
 nodes/storage=0

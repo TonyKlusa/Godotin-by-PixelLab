@@ -5,7 +5,8 @@
 [ext_resource path="res://juego/player/ArbolAnimacion.gd" type="Script" id=3]
 
 [sub_resource type="CylinderShape" id=24]
-height = 2.05232
+height = 2.1
+radius = 0.2
 
 [sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.670157, 0.654471, 0.701569, 1 )
@@ -1624,39 +1625,39 @@ filters = [ "Armadura/Skeleton:l-ARMCONTROL", "Armadura/Skeleton:l-ARMORIENT", "
 
 [sub_resource type="AnimationNodeTransition" id=33]
 input_count = 2
-xfade_time = 0.1
 input_0/name = "en_suelo"
 input_0/auto_advance = false
 input_1/name = "en_aire"
 input_1/auto_advance = false
 
 [sub_resource type="AnimationNodeBlendTree" id=29]
-graph_offset = Vector2( -110.164, 80.4418 )
+graph_offset = Vector2( -218.54, 74.6399 )
 nodes/Animation/node = SubResource( 26 )
-nodes/Animation/position = Vector2( 77.8001, 34.8402 )
+nodes/Animation/position = Vector2( 26.6667, 0 )
 "nodes/Animation 2/node" = SubResource( 25 )
-"nodes/Animation 2/position" = Vector2( -273.56, 154.36 )
+"nodes/Animation 2/position" = Vector2( -240, 133.333 )
 "nodes/Animation 3/node" = SubResource( 30 )
-"nodes/Animation 3/position" = Vector2( -80, 300 )
+"nodes/Animation 3/position" = Vector2( 26.6667, 293.333 )
 "nodes/Animation 4/node" = SubResource( 31 )
-"nodes/Animation 4/position" = Vector2( -80, 420 )
+"nodes/Animation 4/position" = Vector2( 26.6667, 426.667 )
 "nodes/Animation 5/node" = SubResource( 34 )
-"nodes/Animation 5/position" = Vector2( 609.432, 325.392 )
+"nodes/Animation 5/position" = Vector2( 640, 346.667 )
 nodes/MezclaDisparar/node = SubResource( 35 )
-nodes/MezclaDisparar/position = Vector2( 860, 160 )
+nodes/MezclaDisparar/position = Vector2( 880, 186.667 )
 nodes/MezclaIdleCaminar/node = SubResource( 27 )
-nodes/MezclaIdleCaminar/position = Vector2( 260, 80 )
+nodes/MezclaIdleCaminar/position = Vector2( 293.333, 53.3333 )
 nodes/MezclaSaltarCaer/node = SubResource( 32 )
-nodes/MezclaSaltarCaer/position = Vector2( 180, 300 )
+nodes/MezclaSaltarCaer/position = Vector2( 320, 293.333 )
 nodes/TimeScale/node = SubResource( 28 )
-nodes/TimeScale/position = Vector2( -80, 160 )
+nodes/TimeScale/position = Vector2( 26.6667, 133.333 )
 nodes/TransicionSueloAire/node = SubResource( 33 )
-nodes/TransicionSueloAire/position = Vector2( 540, 140 )
-nodes/output/position = Vector2( 1120, 180 )
-node_connections = [ "output", 0, "MezclaDisparar", "MezclaIdleCaminar", 0, "Animation", "MezclaIdleCaminar", 1, "TimeScale", "MezclaDisparar", 0, "TransicionSueloAire", "MezclaDisparar", 1, "Animation 5", "TimeScale", 0, "Animation 2", "TransicionSueloAire", 0, "MezclaIdleCaminar", "TransicionSueloAire", 1, "MezclaSaltarCaer", "MezclaSaltarCaer", 0, "Animation 3", "MezclaSaltarCaer", 1, "Animation 4" ]
+nodes/TransicionSueloAire/position = Vector2( 586.667, 133.333 )
+nodes/output/position = Vector2( 1146.67, 240 )
+node_connections = [ "output", 0, "MezclaDisparar", "MezclaIdleCaminar", 0, "Animation", "MezclaIdleCaminar", 1, "TimeScale", "TimeScale", 0, "Animation 2", "TransicionSueloAire", 0, "MezclaIdleCaminar", "TransicionSueloAire", 1, "MezclaSaltarCaer", "MezclaDisparar", 0, "TransicionSueloAire", "MezclaDisparar", 1, "Animation 5", "MezclaSaltarCaer", 0, "Animation 3", "MezclaSaltarCaer", 1, "Animation 4" ]
 
 [node name="Godotin" type="KinematicBody"]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+collision_mask = 6
 script = ExtResource( 2 )
 __meta__ = {
 "__editor_plugin_screen__": "3D"
@@ -1666,8 +1667,8 @@ gravedad = 1.2
 impulso = 20.0
 fuerza_salto = 5.0
 
-[node name="CollisionCapsule" type="CollisionShape" parent="."]
-transform = Transform( 0.278594, 0, 0, 0, 1.04764, 0, 0, 0, 0.302284, 0.00233161, 1.0792, 0.0520611 )
+[node name="Colisionador" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0 )
 shape = SubResource( 24 )
 
 [node name="Armadura" type="Spatial" parent="."]
@@ -1823,32 +1824,32 @@ anims/shooting = SubResource( 10 )
 anims/shooting_standing = SubResource( 11 )
 anims/walk-cycle = SubResource( 12 )
 
+[node name="ArbolAnimacion" type="AnimationTree" parent="."]
+tree_root = SubResource( 29 )
+anim_player = NodePath("../Animaciones")
+active = true
+parameters/MezclaDisparar/blend_amount = 0.0
+parameters/MezclaIdleCaminar/blend_amount = 0
+parameters/MezclaSaltarCaer/blend_amount = 0
+parameters/TimeScale/scale = 1.0
+parameters/TransicionSueloAire/current = 0
+script = ExtResource( 3 )
+
 [node name="BrazoCamara" type="SpringArm" parent="."]
-transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0 )
 collision_mask = 4
 spring_length = 12.0
 script = ExtResource( 1 )
 rango_rotacion_camara_x = Vector2( -45, -15 )
 camara_y_invertida = true
 
-[node name="CamaraPlayer)" type="Camera" parent="BrazoCamara"]
-transform = Transform( 2, 0, 0, 0, 1.91252, 0.585044, 0, -0.585044, 1.91252, 0, 2.98995, 16.3796 )
+[node name="CameraPlayer" type="Camera" parent="BrazoCamara"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0 )
 current = true
 
-[node name="ArbolAnimacion" type="AnimationTree" parent="."]
-tree_root = SubResource( 29 )
-anim_player = NodePath("../Animaciones")
-active = true
-parameters/MezclaDisparar/blend_amount = 0.0
-parameters/MezclaIdleCaminar/blend_amount = 0.0
-parameters/MezclaSaltarCaer/blend_amount = 0.0
-parameters/TimeScale/scale = 1.0
-parameters/TransicionSueloAire/current = 0
-script = ExtResource( 3 )
-
 [node name="Linterna" type="SpotLight" parent="."]
-transform = Transform( 2, 0, 0, 0, -1.99945, -0.0469802, 0, 0.0469802, -1.99945, -0.542328, 1.22254, 0.925482 )
-light_color = Color( 0.94902, 0.980392, 0.0156863, 1 )
+transform = Transform( -2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, -0.45, 1.25, 0.937751 )
+light_color = Color( 0.996078, 1, 0.384314, 1 )
 light_energy = 0.0
-spot_range = 7.205
-spot_angle = 12.0
+light_indirect_energy = 0.0
+spot_range = 7.25
+spot_angle = 17.6775

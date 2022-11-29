@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://juego/interface/ROBOTECH GP.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://juego/menu/NuevoMenuInicio.gd" type="Script" id=2]
+[ext_resource path="res://juego/menu/botones/BotonSalir.gd" type="Script" id=3]
+[ext_resource path="res://juego/menu/botones/BotonMenu.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=7]
+size = 78
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 62
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 1, 0.627451, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.407843, 0.392157, 0.392157, 1 )
+
+[node name="NuevoMenuInicio" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+menu_ajustes = "res://juego/menu/MenuAjustes.tscn"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color( 0.992157, 0.972549, 0.972549, 1 )
+anchor_left = 0.52
+anchor_top = 0.19
+anchor_right = 0.52
+anchor_bottom = 0.19
+margin_left = -247.2
+margin_top = -45.6
+margin_right = 246.8
+margin_bottom = 45.4
+
+[node name="Label" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.234
+anchor_right = 0.5
+anchor_bottom = 0.28
+margin_left = -150.0
+margin_top = -35.5
+margin_right = 150.0
+margin_bottom = 55.5
+custom_colors/font_color = Color( 0.67451, 0.345098, 0.823529, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "GODOTECH"
+align = 1
+valign = 1
+
+[node name="ContenedorPrincipal" type="VBoxContainer" parent="."]
+anchor_left = 0.529
+anchor_top = 0.63
+anchor_right = 0.529
+anchor_bottom = 0.63
+margin_left = -145.84
+margin_top = -158.2
+margin_right = 146.16
+margin_bottom = 158.8
+
+[node name="BotonCargar" parent="ContenedorPrincipal" instance=ExtResource( 5 )]
+margin_top = 0.0
+margin_right = 292.0
+margin_bottom = 74.0
+disabled = true
+text = "Cargar"
+
+[node name="BotonNuevo" parent="ContenedorPrincipal" instance=ExtResource( 5 )]
+margin_top = 78.0
+margin_right = 292.0
+margin_bottom = 152.0
+text = "NUEVO"
+
+[node name="Ajustes" parent="ContenedorPrincipal" instance=ExtResource( 5 )]
+margin_top = 156.0
+margin_right = 292.0
+margin_bottom = 230.0
+text = "AJUSTES"
+
+[node name="HSeparator" type="HSeparator" parent="ContenedorPrincipal"]
+margin_top = 234.0
+margin_right = 292.0
+margin_bottom = 238.0
+
+[node name="BotonSalir" type="Button" parent="ContenedorPrincipal"]
+margin_top = 242.0
+margin_right = 292.0
+margin_bottom = 317.0
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 10 )
+text = "salir"
+script = ExtResource( 3 )
+
+[connection signal="pressed" from="ContenedorPrincipal/BotonCargar" to="." method="_on_BotonMenu_pressed"]
+[connection signal="pressed" from="ContenedorPrincipal/Ajustes" to="." method="_on_Ajustes_pressed"]
+[connection signal="pressed" from="ContenedorPrincipal/BotonSalir" to="." method="_on_BotonSalir_pressed"]

@@ -1,0 +1,277 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://juego/menu/MenuAjustes.gd" type="Script" id=1]
+[ext_resource path="res://juego/interface/ROBOTECH GP.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=7]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 49
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 41
+font_data = ExtResource( 3 )
+
+[node name="MenuAjustes" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color( 0.992157, 0.972549, 0.972549, 1 )
+anchor_left = 0.52
+anchor_top = 0.19
+anchor_right = 0.52
+anchor_bottom = 0.19
+margin_left = -289.2
+margin_top = -108.6
+margin_right = 262.8
+margin_bottom = -54.6
+
+[node name="Titulo" type="Label" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.234
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = -25.636
+margin_right = 150.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "ajustes"
+align = 1
+valign = 1
+
+[node name="PanelPrincipal" type="Panel" parent="."]
+anchor_right = 0.996
+anchor_bottom = 1.0
+margin_left = 213.0
+margin_top = 81.0
+margin_right = -196.16
+margin_bottom = -79.0
+
+[node name="ContenedorPrincipal" type="VBoxContainer" parent="PanelPrincipal"]
+anchor_left = 0.529
+anchor_top = 0.63
+anchor_right = 0.529
+anchor_bottom = 0.63
+margin_left = -280.363
+margin_top = -314.0
+margin_right = 254.637
+margin_bottom = 97.0
+
+[node name="Pantalla" type="Label" parent="PanelPrincipal/ContenedorPrincipal"]
+margin_right = 535.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "PANTALLA"
+align = 1
+valign = 1
+
+[node name="HSeparator" type="HSeparator" parent="PanelPrincipal/ContenedorPrincipal"]
+margin_top = 61.0
+margin_right = 535.0
+margin_bottom = 65.0
+
+[node name="ContenedorPrincipal2" type="HBoxContainer" parent="PanelPrincipal/ContenedorPrincipal"]
+margin_top = 69.0
+margin_right = 535.0
+margin_bottom = 126.0
+
+[node name="TextoResolucion" type="Label" parent="PanelPrincipal/ContenedorPrincipal/ContenedorPrincipal2"]
+margin_right = 221.0
+margin_bottom = 57.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "RESOLUCION"
+align = 1
+valign = 1
+
+[node name="OptionButton" type="OptionButton" parent="PanelPrincipal/ContenedorPrincipal/ContenedorPrincipal2"]
+margin_left = 225.0
+margin_right = 254.0
+margin_bottom = 57.0
+
+[node name="CheckBox" type="CheckBox" parent="PanelPrincipal/ContenedorPrincipal"]
+margin_top = 130.0
+margin_right = 535.0
+margin_bottom = 195.0
+custom_fonts/font = SubResource( 8 )
+text = "Pantalla Completa"
+
+[node name="HSeparator2" type="HSeparator" parent="PanelPrincipal/ContenedorPrincipal"]
+margin_top = 199.0
+margin_right = 535.0
+margin_bottom = 203.0
+
+[node name="HSeparator3" type="HSeparator" parent="PanelPrincipal/ContenedorPrincipal"]
+margin_top = 207.0
+margin_right = 535.0
+margin_bottom = 211.0
+
+[node name="Volumen" type="Label" parent="PanelPrincipal/ContenedorPrincipal"]
+margin_top = 215.0
+margin_right = 535.0
+margin_bottom = 272.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "VOLUMEN"
+align = 1
+valign = 1
+
+[node name="HSeparator4" type="HSeparator" parent="PanelPrincipal/ContenedorPrincipal"]
+margin_top = 276.0
+margin_right = 535.0
+margin_bottom = 280.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelPrincipal/ContenedorPrincipal"]
+margin_top = 284.0
+margin_right = 535.0
+margin_bottom = 478.0
+
+[node name="VolumenGeneral" type="HBoxContainer" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer"]
+margin_right = 535.0
+margin_bottom = 62.0
+
+[node name="Volumen" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenGeneral"]
+margin_top = 2.0
+margin_right = 176.0
+margin_bottom = 59.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "Volumen"
+align = 1
+valign = 1
+
+[node name="BotonSubirVolumen" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenGeneral"]
+margin_left = 180.0
+margin_right = 213.0
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 9 )
+text = "+"
+
+[node name="NivelVolumen" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenGeneral"]
+margin_left = 217.0
+margin_top = 2.0
+margin_right = 259.0
+margin_bottom = 59.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="BotonBajarVolumen" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenGeneral"]
+margin_left = 263.0
+margin_right = 292.0
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 9 )
+text = "-"
+
+[node name="Musica" type="HBoxContainer" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer"]
+margin_top = 66.0
+margin_right = 535.0
+margin_bottom = 128.0
+
+[node name="Musica" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/Musica"]
+margin_top = 2.0
+margin_right = 136.0
+margin_bottom = 59.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "MUSICA"
+align = 1
+valign = 1
+
+[node name="BotonSubirVolumen" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/Musica"]
+margin_left = 140.0
+margin_right = 173.0
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 9 )
+text = "+"
+
+[node name="NivelVolumen" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/Musica"]
+margin_left = 177.0
+margin_top = 2.0
+margin_right = 219.0
+margin_bottom = 59.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="BotonBajarVolumen" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/Musica"]
+margin_left = 223.0
+margin_right = 252.0
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 9 )
+text = "-"
+
+[node name="SFX" type="HBoxContainer" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer"]
+margin_top = 132.0
+margin_right = 535.0
+margin_bottom = 194.0
+
+[node name="SFX" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/SFX"]
+margin_top = 2.0
+margin_right = 68.0
+margin_bottom = 59.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "SFX"
+align = 1
+valign = 1
+
+[node name="BotonSubirVolumen" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/SFX"]
+margin_left = 72.0
+margin_right = 105.0
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 9 )
+text = "+"
+
+[node name="NivelVolumen" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/SFX"]
+margin_left = 109.0
+margin_top = 2.0
+margin_right = 151.0
+margin_bottom = 59.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "10"
+align = 1
+valign = 1
+
+[node name="BotonBajarVolumen" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/SFX"]
+margin_left = 155.0
+margin_right = 184.0
+margin_bottom = 62.0
+custom_fonts/font = SubResource( 9 )
+text = "-"
+
+[node name="BotonRegresar" type="Button" parent="."]
+anchor_left = 0.372
+anchor_top = 0.895
+anchor_right = 0.632
+anchor_bottom = 0.978
+margin_left = -0.119995
+margin_top = 0.199951
+margin_right = 0.279968
+margin_bottom = 0.0799561
+custom_fonts/font = SubResource( 10 )
+text = "MENU PRINCIPAL"
+
+[connection signal="pressed" from="BotonRegresar" to="." method="_on_BotonRegresar_pressed"]

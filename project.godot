@@ -20,21 +20,39 @@ _global_script_classes=[ {
 "path": "res://juego/player/Godotin.gd"
 }, {
 "base": "Area",
-"class": "MonedaDorada",
+"class": "Moneda",
 "language": "GDScript",
-"path": "res://juego/items/MonedaDorada.gd"
+"path": "res://juego/items/MonedaOro.gd"
+}, {
+"base": "Node",
+"class": "Nivel",
+"language": "GDScript",
+"path": "res://juego/niveles/Nivel.gd"
+}, {
+"base": "Area",
+"class": "Sierra",
+"language": "GDScript",
+"path": "res://juego/objetos/danio/Sierra.gd"
 } ]
 _global_script_class_icons={
 "ArbolAnimacionPlayer": "",
 "Godotin": "",
-"MonedaDorada": ""
+"Moneda": "",
+"Nivel": "",
+"Sierra": ""
 }
 
 [application]
 
-config/name="Godotin"
-run/main_scene="res://juego/Niveles/NivelTest.tscn"
+config/name="Klusacek-Godotech"
+config/description="Godotech es un proyecto dentro del programa del Informatorio 2022"
+run/main_scene="res://juego/niveles/NivelTest.tscn"
 config/icon="res://icono.png"
+
+[autoload]
+
+Eventos="*res://juego/autoload/Eventos.gd"
+DatosJuego="*res://juego/autoload/DatosJuego.gd"
 
 [display]
 
@@ -52,16 +70,6 @@ saltar={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
-mov_adelante={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
- ]
-}
-mov_atras={
-"deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
- ]
-}
 mov_derecha={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
@@ -72,6 +80,16 @@ mov_izquierda={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":65,"unicode":0,"echo":false,"script":null)
  ]
 }
+mov_adelante={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+mov_atras={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
 disparar={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":80,"unicode":0,"echo":false,"script":null)
@@ -80,12 +98,10 @@ disparar={
 
 [layer_names]
 
-3d_render/layer_1="Player"
-3d_render/layer_2="Plataforma"
-3d_render/layer_3="Mundo"
 3d_physics/layer_1="Player"
 3d_physics/layer_2="Plataformas"
 3d_physics/layer_3="Mundo"
+3d_physics/layer_4="Danio"
 
 [physics]
 

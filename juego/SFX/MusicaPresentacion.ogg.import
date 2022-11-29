@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/MusicaPresentacion.ogg-7639c9eb9976f78c5ac5a16b8fe457ed.oggstr"
+
+[deps]
+
+source_file="res://juego/SFX/MusicaPresentacion.ogg"
+dest_files=[ "res://.import/MusicaPresentacion.ogg-7639c9eb9976f78c5ac5a16b8fe457ed.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
