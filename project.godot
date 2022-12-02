@@ -24,10 +24,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://juego/items/MonedaOro.gd"
 }, {
-"base": "Node",
-"class": "Nivel",
+"base": "Area",
+"class": "MonedaDorada",
 "language": "GDScript",
-"path": "res://juego/niveles/Nivel.gd"
+"path": "res://juego/items/MonedaDorada.gd"
 }, {
 "base": "Area",
 "class": "Sierra",
@@ -38,7 +38,7 @@ _global_script_class_icons={
 "ArbolAnimacionPlayer": "",
 "Godotin": "",
 "Moneda": "",
-"Nivel": "",
+"MonedaDorada": "",
 "Sierra": ""
 }
 

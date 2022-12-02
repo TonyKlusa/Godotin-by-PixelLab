@@ -1,6 +1,6 @@
 # Nivel.gd
 tool
-class_name Nivel
+#class_name Nivel
 extends Node
 
 

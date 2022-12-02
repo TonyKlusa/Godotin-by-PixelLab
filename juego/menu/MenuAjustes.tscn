@@ -1,10 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://juego/menu/MenuAjustes.gd" type="Script" id=1]
+[ext_resource path="res://juego/SFX/BotonHover.wav" type="AudioStream" id=2]
 [ext_resource path="res://juego/interface/ROBOTECH GP.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://juego/menu/BotonSubirVolumen.gd" type="Script" id=4]
+[ext_resource path="res://juego/SFX/BotonnSFX.wav" type="AudioStream" id=5]
 
 [sub_resource type="DynamicFont" id=7]
 size = 50
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 48
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=8]
@@ -87,46 +94,48 @@ margin_top = 61.0
 margin_right = 535.0
 margin_bottom = 65.0
 
-[node name="ContenedorPrincipal2" type="HBoxContainer" parent="PanelPrincipal/ContenedorPrincipal"]
+[node name="Resolucion" type="HBoxContainer" parent="PanelPrincipal/ContenedorPrincipal"]
 margin_top = 69.0
 margin_right = 535.0
-margin_bottom = 126.0
+margin_bottom = 130.0
 
-[node name="TextoResolucion" type="Label" parent="PanelPrincipal/ContenedorPrincipal/ContenedorPrincipal2"]
+[node name="TextoResolucion" type="Label" parent="PanelPrincipal/ContenedorPrincipal/Resolucion"]
+margin_top = 2.0
 margin_right = 221.0
-margin_bottom = 57.0
+margin_bottom = 59.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "RESOLUCION"
 align = 1
 valign = 1
 
-[node name="OptionButton" type="OptionButton" parent="PanelPrincipal/ContenedorPrincipal/ContenedorPrincipal2"]
+[node name="OpcionResolucion" type="OptionButton" parent="PanelPrincipal/ContenedorPrincipal/Resolucion"]
 margin_left = 225.0
 margin_right = 254.0
-margin_bottom = 57.0
+margin_bottom = 61.0
+custom_fonts/font = SubResource( 11 )
 
-[node name="CheckBox" type="CheckBox" parent="PanelPrincipal/ContenedorPrincipal"]
-margin_top = 130.0
+[node name="PantallaCompleta" type="CheckBox" parent="PanelPrincipal/ContenedorPrincipal"]
+margin_top = 134.0
 margin_right = 535.0
-margin_bottom = 195.0
+margin_bottom = 199.0
 custom_fonts/font = SubResource( 8 )
 text = "Pantalla Completa"
 
 [node name="HSeparator2" type="HSeparator" parent="PanelPrincipal/ContenedorPrincipal"]
-margin_top = 199.0
+margin_top = 203.0
 margin_right = 535.0
-margin_bottom = 203.0
+margin_bottom = 207.0
 
 [node name="HSeparator3" type="HSeparator" parent="PanelPrincipal/ContenedorPrincipal"]
-margin_top = 207.0
+margin_top = 211.0
 margin_right = 535.0
-margin_bottom = 211.0
+margin_bottom = 215.0
 
 [node name="Volumen" type="Label" parent="PanelPrincipal/ContenedorPrincipal"]
-margin_top = 215.0
+margin_top = 219.0
 margin_right = 535.0
-margin_bottom = 272.0
+margin_bottom = 276.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 7 )
 text = "VOLUMEN"
@@ -134,14 +143,14 @@ align = 1
 valign = 1
 
 [node name="HSeparator4" type="HSeparator" parent="PanelPrincipal/ContenedorPrincipal"]
-margin_top = 276.0
+margin_top = 280.0
 margin_right = 535.0
-margin_bottom = 280.0
+margin_bottom = 284.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelPrincipal/ContenedorPrincipal"]
-margin_top = 284.0
+margin_top = 288.0
 margin_right = 535.0
-margin_bottom = 478.0
+margin_bottom = 482.0
 
 [node name="VolumenGeneral" type="HBoxContainer" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer"]
 margin_right = 535.0
@@ -149,25 +158,27 @@ margin_bottom = 62.0
 
 [node name="Volumen" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenGeneral"]
 margin_top = 2.0
-margin_right = 176.0
+margin_right = 193.0
 margin_bottom = 59.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "Volumen"
+text = "Volumen "
 align = 1
 valign = 1
 
-[node name="BotonSubirVolumen" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenGeneral"]
-margin_left = 180.0
-margin_right = 213.0
+[node name="SubirVolumenGeneral" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenGeneral"]
+margin_left = 197.0
+margin_right = 230.0
 margin_bottom = 62.0
 custom_fonts/font = SubResource( 9 )
 text = "+"
+script = ExtResource( 4 )
+nodo_sfx = NodePath("../../../../../BotonSFX")
 
 [node name="NivelVolumen" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenGeneral"]
-margin_left = 217.0
+margin_left = 234.0
 margin_top = 2.0
-margin_right = 259.0
+margin_right = 276.0
 margin_bottom = 59.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 7 )
@@ -175,39 +186,43 @@ text = "10"
 align = 1
 valign = 1
 
-[node name="BotonBajarVolumen" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenGeneral"]
-margin_left = 263.0
-margin_right = 292.0
+[node name="BajarVolumenGeneral" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenGeneral"]
+margin_left = 280.0
+margin_right = 309.0
 margin_bottom = 62.0
 custom_fonts/font = SubResource( 9 )
 text = "-"
+script = ExtResource( 4 )
+nodo_sfx = NodePath("../../../../../BotonSFX")
 
-[node name="Musica" type="HBoxContainer" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer"]
+[node name="VolumenMusica" type="HBoxContainer" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer"]
 margin_top = 66.0
 margin_right = 535.0
 margin_bottom = 128.0
 
-[node name="Musica" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/Musica"]
+[node name="Musica" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenMusica"]
 margin_top = 2.0
-margin_right = 136.0
+margin_right = 204.0
 margin_bottom = 59.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "MUSICA"
+text = "MUSICA    "
 align = 1
 valign = 1
 
-[node name="BotonSubirVolumen" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/Musica"]
-margin_left = 140.0
-margin_right = 173.0
+[node name="SubirVolumenMusica" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenMusica"]
+margin_left = 208.0
+margin_right = 241.0
 margin_bottom = 62.0
 custom_fonts/font = SubResource( 9 )
 text = "+"
+script = ExtResource( 4 )
+nodo_sfx = NodePath("../../../../../BotonSFX")
 
-[node name="NivelVolumen" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/Musica"]
-margin_left = 177.0
+[node name="NivelVolumen" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenMusica"]
+margin_left = 245.0
 margin_top = 2.0
-margin_right = 219.0
+margin_right = 287.0
 margin_bottom = 59.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 7 )
@@ -215,39 +230,43 @@ text = "10"
 align = 1
 valign = 1
 
-[node name="BotonBajarVolumen" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/Musica"]
-margin_left = 223.0
-margin_right = 252.0
+[node name="BajarVolumenMusica" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenMusica"]
+margin_left = 291.0
+margin_right = 320.0
 margin_bottom = 62.0
 custom_fonts/font = SubResource( 9 )
 text = "-"
+script = ExtResource( 4 )
+nodo_sfx = NodePath("../../../../../BotonSFX")
 
-[node name="SFX" type="HBoxContainer" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer"]
+[node name="VolumenSFX" type="HBoxContainer" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer"]
 margin_top = 132.0
 margin_right = 535.0
 margin_bottom = 194.0
 
-[node name="SFX" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/SFX"]
+[node name="SFX" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenSFX"]
 margin_top = 2.0
-margin_right = 68.0
+margin_right = 204.0
 margin_bottom = 59.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 7 )
-text = "SFX"
+text = "SFX        "
 align = 1
 valign = 1
 
-[node name="BotonSubirVolumen" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/SFX"]
-margin_left = 72.0
-margin_right = 105.0
+[node name="SubirVolumenSFX" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenSFX"]
+margin_left = 208.0
+margin_right = 241.0
 margin_bottom = 62.0
 custom_fonts/font = SubResource( 9 )
 text = "+"
+script = ExtResource( 4 )
+nodo_sfx = NodePath("../../../../../BotonSFX")
 
-[node name="NivelVolumen" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/SFX"]
-margin_left = 109.0
+[node name="NivelVolumen" type="Label" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenSFX"]
+margin_left = 245.0
 margin_top = 2.0
-margin_right = 151.0
+margin_right = 287.0
 margin_bottom = 59.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 7 )
@@ -255,12 +274,14 @@ text = "10"
 align = 1
 valign = 1
 
-[node name="BotonBajarVolumen" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/SFX"]
-margin_left = 155.0
-margin_right = 184.0
+[node name="BajarVolumenSFX" type="Button" parent="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenSFX"]
+margin_left = 291.0
+margin_right = 320.0
 margin_bottom = 62.0
 custom_fonts/font = SubResource( 9 )
 text = "-"
+script = ExtResource( 4 )
+nodo_sfx = NodePath("../../../../../BotonSFX")
 
 [node name="BotonRegresar" type="Button" parent="."]
 anchor_left = 0.372
@@ -274,4 +295,25 @@ margin_bottom = 0.0799561
 custom_fonts/font = SubResource( 10 )
 text = "MENU PRINCIPAL"
 
+[node name="BotonHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -18.0
+bus = "SFX"
+
+[node name="Musica" type="AudioStreamPlayer" parent="."]
+
+[node name="BotonSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -10.0
+bus = "SFX"
+
+[connection signal="item_selected" from="PanelPrincipal/ContenedorPrincipal/Resolucion/OpcionResolucion" to="." method="_on_OpcionResolucion_item_selected"]
+[connection signal="toggled" from="PanelPrincipal/ContenedorPrincipal/PantallaCompleta" to="." method="_on_CheckBox_toggled"]
+[connection signal="pressed" from="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenGeneral/SubirVolumenGeneral" to="." method="_on_SubirVolumenGeneral_pressed"]
+[connection signal="pressed" from="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenGeneral/BajarVolumenGeneral" to="." method="_on_BajarVolumenGeneral_pressed"]
+[connection signal="pressed" from="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenMusica/SubirVolumenMusica" to="." method="_on_SubirVolumenMusica_pressed"]
+[connection signal="pressed" from="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenMusica/BajarVolumenMusica" to="." method="_on_BajarVolumenMusica_pressed"]
+[connection signal="pressed" from="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenSFX/SubirVolumenSFX" to="." method="_on_SubirVolumenSFX_pressed"]
+[connection signal="pressed" from="PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenSFX/BajarVolumenSFX" to="." method="_on_BajarVolumenSFX_pressed"]
+[connection signal="mouse_entered" from="BotonRegresar" to="." method="_on_BotonRegresar_mouse_entered"]
 [connection signal="pressed" from="BotonRegresar" to="." method="_on_BotonRegresar_pressed"]
