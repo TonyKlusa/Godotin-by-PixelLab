@@ -3,9 +3,9 @@ extends Control
 
 export (String, FILE, "*. tscn") var menu_inicial = "res://juego/menu/NuevoMenuInicio.tscn"
 
-onready var boton_pantalla_completa : CheckBox= $PanelPrincipal/ContenedorPrincipal/PantallaCompleta
+onready var boton_pantalla_completa : CheckBox= $ContenedorTabulador/AudioVideo/PanelPrincipal/ContenedorPrincipal/PantallaCompleta
 
-onready var opcion_resoluciones = $PanelPrincipal/ContenedorPrincipal/Resolucion/OpcionResolucion
+onready var opcion_resoluciones = $ContenedorTabulador/AudioVideo/PanelPrincipal/ContenedorPrincipal/Resolucion/OpcionResolucion
 
 onready var resoluciones : Dictionary = {
 	"640 x 480": Vector2 (640, 480),
@@ -23,9 +23,9 @@ onready var bus_indices := {
 }
 
 onready var bus_etiquetas:= {
-	"Master": $PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenGeneral/NivelVolumen,
-	"Musica": $PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenMusica/NivelVolumen,
-	"SFX": $PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenSFX/NivelVolumen,
+	"Master": $ContenedorTabulador/AudioVideo/PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenGeneral/NivelVolumen,
+	"Musica": $ContenedorTabulador/AudioVideo/PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenMusica/NivelVolumen,
+	"SFX": $ContenedorTabulador/AudioVideo/PanelPrincipal/ContenedorPrincipal/VBoxContainer/VolumenSFX/NivelVolumen,
 }
 
 func _ready() -> void:

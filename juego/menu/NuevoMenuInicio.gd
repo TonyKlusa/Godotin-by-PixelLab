@@ -3,6 +3,11 @@ tool
 extends Control
 
 export (String, FILE, "*. tscn") var menu_ajustes = ""
+export (String, FILE, "*. tscn") var nivel_inicial = ""
+
+func _on_BotonNuevo_pressed() -> void:
+	get_tree().change_scene_to(nivel_inicial)
+
 
 func _on_BotonSalir_pressed () -> void:
 	$BotonSFX.play()

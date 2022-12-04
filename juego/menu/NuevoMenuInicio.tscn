@@ -29,6 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 menu_ajustes = "res://juego/menu/MenuAjustes.tscn"
+nivel_inicial = "res://juego/Niveles/NivelTest.tscn"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
