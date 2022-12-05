@@ -693,6 +693,9 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
 [node name="Godotin" parent="." instance=ExtResource( 2 )]
 transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2, 0, 0 )
 
+[node name="PlayerDummy" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2, 0, 0 )
+
 [node name="ContenedorMonedas" type="Node" parent="."]
 
 [node name="MonedaDorada" parent="ContenedorMonedas" instance=ExtResource( 8 )]

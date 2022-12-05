@@ -4,9 +4,11 @@ extends Control
 
 export (String, FILE, "*. tscn") var menu_ajustes = ""
 export (String, FILE, "*. tscn") var nivel_inicial = ""
+export (String, FILE, "*. tscn") var pantalla_carga = ""
 
 func _on_BotonNuevo_pressed() -> void:
-	get_tree().change_scene_to(nivel_inicial)
+	DatosJuego.nivel_actual = nivel_inicial
+	get_tree().change_scene(pantalla_carga)
 
 
 func _on_BotonSalir_pressed () -> void:
