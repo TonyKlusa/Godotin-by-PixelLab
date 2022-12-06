@@ -53,6 +53,7 @@ config/icon="res://icono.png"
 
 Eventos="*res://juego/autoload/Eventos.gd"
 DatosJuego="*res://juego/autoload/DatosJuego.gd"
+DatosConfiguracion="*res://juego/autoload/DatosConfiguracion.gd"
 
 [display]
 
