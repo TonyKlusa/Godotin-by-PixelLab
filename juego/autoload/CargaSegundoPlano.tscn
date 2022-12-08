@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://juego/interface/ROBOTECH GP.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://juego/autoload/CargaSegundoPlano.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.0745098, 0.992157, 0.0196078, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.972549, 0.0196078, 0.0196078, 1 )
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="DynamicFont" id=4]
+size = 30
+font_data = ExtResource( 1 )
+
+[node name="CargaSegundoPlano" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+anchor_left = 23.983
+anchor_top = 15.941
+anchor_right = 23.983
+anchor_bottom = 15.941
+margin_left = -22407.2
+margin_top = -9639.44
+margin_right = -22093.2
+margin_bottom = -9586.44
+custom_fonts/font = SubResource( 1 )
+custom_styles/fg = SubResource( 2 )
+custom_styles/bg = SubResource( 3 )
+
+[node name="TextoCompleto" type="Label" parent="."]
+anchor_left = 23.951
+anchor_top = 16.008
+anchor_right = 23.951
+anchor_bottom = 16.008
+margin_left = -22379.0
+margin_top = -9799.12
+margin_right = -22064.0
+margin_bottom = -9688.12
+custom_fonts/font = SubResource( 4 )
+text = "carga completa
+presione cualquier tecla
+para continuar"
+align = 1
+valign = 1

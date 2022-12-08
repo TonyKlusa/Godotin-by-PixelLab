@@ -18,6 +18,14 @@ func _ready() -> void:
 	#DatosJuego.nivel_actual = get_tree().current_scene.filename #verificar error
 	DatosJuego.num_nivel_actual = numero_nivel
 	DatosJuego.nivel_proximo = proximo_nivel
+	yield(get_tree().create_timer(4.0), "timeout")
+	actualizar_datos()
+
+## Metodos custom
+func actualizar_datos() -> void:
+	DatosJuego.nivel_actual = get_tree().current_scene.filename
+	DatosJuego.num_nivel_actual = numero_nivel
+	DatosJuego.nivel_proximo = proximo_nivel
 
 
 

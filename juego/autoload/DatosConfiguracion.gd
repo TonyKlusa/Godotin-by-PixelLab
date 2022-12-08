@@ -2,4 +2,4 @@
 
 extends Node
 
-const OS_ADMITIDOS_THREADS: Array = [ "windows", "X11", "iOS"]
+const OS_ADMITIDOS_THREADS: Array = ["Windows", "X11", "iOS"]

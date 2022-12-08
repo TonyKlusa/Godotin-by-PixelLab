@@ -11,3 +11,7 @@ func get_configuration_warning () -> String :
 
 func etiqueta_numero_nivel() -> void:
 	get_tree().change_scene(menu_inicial)
+
+## Metodos custom
+func cargar_menu() -> void:
+	get_tree().change_scene(menu_inicial)

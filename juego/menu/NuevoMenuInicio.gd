@@ -9,6 +9,7 @@ export (String, FILE, "*. tscn") var pantalla_carga = ""
 func _on_BotonNuevo_pressed() -> void:
 	DatosJuego.nivel_actual = nivel_inicial
 	get_tree().change_scene(pantalla_carga)
+	
 
 
 func _on_BotonSalir_pressed () -> void:
