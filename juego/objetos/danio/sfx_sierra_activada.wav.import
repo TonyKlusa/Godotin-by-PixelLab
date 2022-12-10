@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_sierra_activada.wav-0483c0f0ab84633d0c2d7c4ce71f4002.sample"
+
+[deps]
+
+source_file="res://juego/objetos/danio/sfx_sierra_activada.wav"
+dest_files=[ "res://.import/sfx_sierra_activada.wav-0483c0f0ab84633d0c2d7c4ce71f4002.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,134 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://juego/font/ROBOTECH GP.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://recursos/fuentes/BotonesMenu.tres" type="DynamicFont" id=2]
+[ext_resource path="res://juego/menus/MenuPausa.gd" type="Script" id=3]
+[ext_resource path="res://recursos/botones/BotonNormal.tres" type="StyleBox" id=4]
+[ext_resource path="res://recursos/botones/BotonSalirNormal.tres" type="StyleBox" id=5]
+[ext_resource path="res://juego/SFX/Select_ok.wav" type="AudioStream" id=6]
+[ext_resource path="res://juego/SFX/BotonHover.wav" type="AudioStream" id=7]
+[ext_resource path="res://juego/menus/Fondo.tscn" type="PackedScene" id=8]
+
+[sub_resource type="DynamicFont" id=10]
+size = 70
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 45
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.0705882, 0.803922, 0.937255, 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.0705882, 0.803922, 0.937255, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.278431, 0.243137, 0.243137, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.968627, 0.156863, 0.054902, 1 )
+
+[node name="MenuPausa" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+menu_ajustes = "res://juego/menus/MenuAjustes.tscn"
+menu_inicio = "res://juego/menus/MenuInicio.tscn"
+
+[node name="Fondo" parent="." instance=ExtResource( 8 )]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.145098 )
+
+[node name="PAUSA" type="Label" parent="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 0.172
+margin_left = -2.0
+margin_top = 59.0
+margin_bottom = 58.92
+custom_fonts/font = SubResource( 10 )
+text = "PAUSA"
+align = 1
+valign = 1
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -168.0
+margin_top = -127.0
+margin_right = 161.0
+margin_bottom = 177.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.5
+margin_top = -147.5
+margin_right = 160.5
+margin_bottom = 147.5
+
+[node name="BotonContinuar" type="Button" parent="Panel/VBoxContainer"]
+margin_right = 321.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 7 )
+custom_styles/normal = ExtResource( 4 )
+text = "Continuar"
+
+[node name="BotonMenu" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 97.0
+margin_right = 321.0
+margin_bottom = 190.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/normal = SubResource( 6 )
+text = "Menu Principal"
+
+[node name="HSeparator" type="HSeparator" parent="Panel/VBoxContainer"]
+margin_top = 194.0
+margin_right = 321.0
+margin_bottom = 198.0
+
+[node name="BotonSalir" type="Button" parent="Panel/VBoxContainer"]
+margin_top = 202.0
+margin_right = 321.0
+margin_bottom = 295.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/normal = ExtResource( 5 )
+text = "Salir"
+
+[node name="BotonHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -20.0
+bus = "SFX"
+
+[node name="BotonPress" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -20.0
+bus = "SFX"
+
+[connection signal="mouse_entered" from="Panel/VBoxContainer/BotonContinuar" to="." method="_on_BotonContinuar_mouse_entered"]
+[connection signal="pressed" from="Panel/VBoxContainer/BotonContinuar" to="." method="_on_BotonContinuar_pressed"]
+[connection signal="mouse_entered" from="Panel/VBoxContainer/BotonMenu" to="." method="_on_BotonMenu_mouse_entered"]
+[connection signal="pressed" from="Panel/VBoxContainer/BotonMenu" to="." method="_on_BotonMenu_pressed"]
+[connection signal="mouse_entered" from="Panel/VBoxContainer/BotonSalir" to="." method="_on_BotonSalir_mouse_entered"]
+[connection signal="pressed" from="Panel/VBoxContainer/BotonSalir" to="." method="_on_BotonSalir_pressed"]

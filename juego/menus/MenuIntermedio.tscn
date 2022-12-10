@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://juego/menus/MenuIntermedio.gd" type="Script" id=2]
+[ext_resource path="res://recursos/botones/BotonNormal.tres" type="StyleBox" id=3]
+[ext_resource path="res://juego/font/ROBOTECH GP.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://juego/menus/Fondo.tscn" type="PackedScene" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 73
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 70
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+extra_spacing_char = 2
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.054902, 0.682353, 0.803922, 1 )
+
+[node name="MenuIntermedio" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+pantalla_carga = "res://juego/menus/PantallaCarga.tscn"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Fondo" parent="." instance=ExtResource( 5 )]
+
+[node name="Titulo" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -295.0
+margin_top = 75.0
+margin_right = 305.0
+margin_bottom = 158.0
+custom_fonts/font = SubResource( 1 )
+text = "NIvel X completo"
+align = 1
+valign = 1
+
+[node name="Puntos" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -274.0
+margin_top = -97.0
+margin_right = 282.0
+margin_bottom = 64.0
+custom_fonts/font = SubResource( 2 )
+text = "X
+PUNTOS TOTALES"
+align = 1
+
+[node name="BotonNivel" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -224.0
+margin_top = -242.0
+margin_right = 242.0
+margin_bottom = -140.0
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/normal = ExtResource( 3 )
+text = "siguiente nivel"
+icon_align = 1
+
+[connection signal="pressed" from="BotonNivel" to="." method="_on_BotonNivel_pressed"]

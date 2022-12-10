@@ -2,21 +2,17 @@
 class_name Godotin
 extends KinematicBody
 
-
 ## Constantes
 const direccion_arriba: Vector3 = Vector3.UP
-
 
 ## Enums
 enum {SUELO, AIRE}
 
-
-## Atributos Export
+## Atributos export
 export var velocidad_max: Vector2 = Vector2(10.0, 60.0)
 export var gravedad: float = 9.8
 export var impulso: float = 50.0
 export var fuerza_salto: float = 18.0
-
 
 ## Atributos
 var movimiento: Vector3 = Vector3.ZERO
@@ -26,15 +22,28 @@ var saltando = false
 var cayendo = false
 var disparando = false
 
-
-## Atributos Onready
+## Atributos onready
 onready var brazo_camara: SpringArm = $BrazoCamara
 onready var armadura: Spatial = $Armadura
-onready var arbol_animacion: ArbolAnimacionPlayer = $ArbolAnimacion
+onready var arbol_animacion: AnimationTree = $ArbolDeAnimacion
 onready var linterna: SpotLight = $Linterna
 
-
 ## Metodos
+func _process(_delta: float) -> void:
+	brazo_camara.translation = translation
+
+func _physics_process(_delta: float) -> void:
+	movimiento_vertical()
+	movimiento_horizontal()
+	movimiento = move_and_slide_with_snap(movimiento, vector_snap, direccion_arriba, true)
+
+	var direccion_vista_player = Vector2(movimiento.z, movimiento.x)
+	if direccion_vista_player.length() > 0:
+		armadura.rotation.y = direccion_vista_player.angle()
+	
+	if disparando:
+		linterna.rotation.y = armadura.rotation.y - 3.14159
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("disparar"):
 		arbol_animacion.set_mezcla_disparar(1)
@@ -45,25 +54,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		disparando = false
 		linterna.light_energy = 0
 
-
-func _process(_delta: float) -> void:
-	brazo_camara.translation = translation
-
-
-func _physics_process(_delta: float) -> void:
-	movimiento_horizontal()
-	movimiento_vertical()
-	movimiento = move_and_slide_with_snap(movimiento, vector_snap, direccion_arriba, true)
-	
-	var direccion_vista_player = Vector2(movimiento.z, movimiento.x)
-	if direccion_vista_player.length() > 0:
-		armadura.rotation.y = direccion_vista_player.angle()
-	
-	if disparando:
-		linterna.rotation.y = armadura.rotation.y - 3.14159
-
-
-## Metodos Custom
+## Metodos custom
 func movimiento_vertical() -> void:
 	if not is_on_floor():
 		movimiento.y -= gravedad
@@ -98,15 +89,12 @@ func movimiento_vertical() -> void:
 		for i in range(1, 11, 1):
 			arbol_animacion.set_mezcla_saltar_caer(i * 0.1)
 
-
 func movimiento_horizontal() -> void:
 	movimiento.x = tomar_direccion().x * velocidad_max.x
 	movimiento.z = tomar_direccion().z * velocidad_max.x
 
-
 func tomar_direccion() -> Vector3:
 	var direccion: Vector3 = Vector3.ZERO
-	
 	direccion.x = Input.get_action_strength("mov_derecha") - Input.get_action_strength("mov_izquierda")
 	direccion.z = Input.get_action_strength("mov_atras") - Input.get_action_strength("mov_adelante")
 	arbol_animacion.set_valor_mezcla_idle_caminar(direccion.length())
@@ -114,8 +102,8 @@ func tomar_direccion() -> Vector3:
 	
 	return direccion
 
-
 func respawn() -> void:
-	DatosJuego.restar_vidas()
-	get_tree().reload_current_scene()
-
+	var continua_el_juego = DatosJuego.restar_vidas()
+# warning-ignore:return_value_discarded
+	if continua_el_juego:
+		get_tree().reload_current_scene()

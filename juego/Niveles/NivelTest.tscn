@@ -1,51 +1,50 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://juego/bloques/ColumnaBloques.tscn" type="PackedScene" id=1]
-[ext_resource path="res://juego/player/Godotin.tscn" type="PackedScene" id=2]
-[ext_resource path="res://juego/bloques/BloqueLargo.tscn" type="PackedScene" id=3]
-[ext_resource path="res://juego/bloques/BloquePendiente.tscn" type="PackedScene" id=4]
-[ext_resource path="res://juego/bloques/BloqueHexagono.tscn" type="PackedScene" id=5]
-[ext_resource path="res://juego/bloques/BloqueFinal.tscn" type="PackedScene" id=6]
-[ext_resource path="res://juego/bloques/BloqueMedio.tscn" type="PackedScene" id=7]
-[ext_resource path="res://juego/items/MonedaOro.tscn" type="PackedScene" id=8]
-[ext_resource path="res://juego/objetos/danio/Sierra.tscn" type="PackedScene" id=9]
-[ext_resource path="res://juego/interface/HUD.tscn" type="PackedScene" id=10]
-[ext_resource path="res://juego/objetos/portal/Portal.tscn" type="PackedScene" id=11]
-[ext_resource path="res://juego/niveles/Nivel.gd" type="Script" id=12]
+[ext_resource path="res://juego/bloques/BloqueCesped.tscn" type="PackedScene" id=2]
+[ext_resource path="res://juego/player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://juego/bloques/BloqueHexagono.tscn" type="PackedScene" id=8]
+[ext_resource path="res://juego/items/MonedaDorada.tscn" type="PackedScene" id=9]
+[ext_resource path="res://juego/objetos/danio/Sierra.tscn" type="PackedScene" id=10]
+[ext_resource path="res://juego/interfaz/HUD.tscn" type="PackedScene" id=11]
+[ext_resource path="res://juego/objetos/Portal.tscn" type="PackedScene" id=12]
+[ext_resource path="res://juego/niveles/Nivel.gd" type="Script" id=13]
+[ext_resource path="res://juego/menus/MenuPausa.tscn" type="PackedScene" id=14]
 
-[sub_resource type="PlaneMesh" id=1]
+[sub_resource type="SpatialMaterial" id=1]
+albedo_color = Color( 0.0941176, 0.290196, 0.278431, 1 )
+
+[sub_resource type="PlaneMesh" id=2]
+material = SubResource( 1 )
 size = Vector2( 50, 50 )
-
-[sub_resource type="SpatialMaterial" id=2]
-albedo_color = Color( 0.0313726, 0.427451, 0.4, 1 )
 
 [sub_resource type="BoxShape" id=3]
 extents = Vector3( 25, 0.001, 25 )
 
 [node name="NivelTest" type="Node"]
-script = ExtResource( 12 )
-numero_nivel = 1
-proximo_nivel = "res://juego/niveles/NivelTest2.tscn"
-nivel_actual = "1"
+script = ExtResource( 13 )
 
-[node name="HUD" parent="." instance=ExtResource( 10 )]
+[node name="HUD" parent="." instance=ExtResource( 11 )]
+
+[node name="MenuPausa" parent="." instance=ExtResource( 14 )]
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0487423, 0 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( -0.866025, -0.25, -0.433013, -7.57103e-08, -0.866025, 0.5, -0.5, 0.433013, 0.75, 0, 7.27282, 0 )
+light_color = Color( 0.992157, 1, 0, 1 )
+light_energy = 1.5
+shadow_enabled = true
 
 [node name="Suelo" type="StaticBody" parent="."]
-collision_layer = 4
-collision_mask = 3
+collision_layer = 0
 
 [node name="MeshInstance" type="MeshInstance" parent="Suelo"]
-mesh = SubResource( 1 )
-material/0 = SubResource( 2 )
+mesh = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Suelo"]
 shape = SubResource( 3 )
-
-[node name="DirectionalLight" type="DirectionalLight" parent="."]
-transform = Transform( 1, 0, 0, 0, -0.620162, 0.784473, 0, -0.784473, -0.620162, -0.0384274, 10, -10.557 )
-light_color = Color( 1, 0.960784, 0, 1 )
-light_energy = 0.01
-shadow_enabled = true
 
 [node name="Bordes" type="Spatial" parent="."]
 
@@ -123,588 +122,570 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, -0.2, 25 )
 [node name="ColumnaBloques24" parent="Bordes/Norte" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -0.2, 25 )
 
-[node name="ColumnaBloques25" parent="Bordes/Norte" instance=ExtResource( 1 )]
+[node name="ColumnaBloques50" parent="Bordes/Norte" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -0.2, 25 )
 
-[node name="ColumnaBloques27" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.2, 25 )
+[node name="ColumnaBloques51" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -0.2, 25 )
 
-[node name="ColumnaBloques28" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.2, 25 )
-
-[node name="ColumnaBloques29" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.2, 25 )
-
-[node name="ColumnaBloques30" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.2, 25 )
-
-[node name="ColumnaBloques31" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.2, 25 )
-
-[node name="ColumnaBloques32" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.2, 25 )
-
-[node name="ColumnaBloques33" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.2, 25 )
-
-[node name="ColumnaBloques34" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.2, 25 )
-
-[node name="ColumnaBloques35" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.2, 25 )
-
-[node name="ColumnaBloques36" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.2, 25 )
-
-[node name="ColumnaBloques37" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.2, 25 )
-
-[node name="ColumnaBloques38" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -0.2, 25 )
-
-[node name="ColumnaBloques39" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.2, 25 )
-
-[node name="ColumnaBloques40" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -0.2, 25 )
-
-[node name="ColumnaBloques41" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -0.2, 25 )
-
-[node name="ColumnaBloques42" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.2, 25 )
-
-[node name="ColumnaBloques43" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.2, 25 )
-
-[node name="ColumnaBloques44" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -0.2, 25 )
-
-[node name="ColumnaBloques45" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.2, 25 )
-
-[node name="ColumnaBloques46" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.2, 25 )
-
-[node name="ColumnaBloques47" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -0.2, 25 )
-
-[node name="ColumnaBloques48" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.2, 25 )
-
-[node name="ColumnaBloques49" parent="Bordes/Norte" instance=ExtResource( 1 )]
+[node name="ColumnaBloques25" parent="Bordes/Norte" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -0.2, 25 )
 
-[node name="ColumnaBloques50" parent="Bordes/Norte" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23, -0.2, 25 )
-
-[node name="ColumnaBloques51" parent="Bordes/Norte" instance=ExtResource( 1 )]
+[node name="ColumnaBloques49" parent="Bordes/Norte" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -0.2, 25 )
 
-[node name="Sur" type="Spatial" parent="Bordes"]
+[node name="ColumnaBloques26" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23, -0.2, 25 )
 
-[node name="ColumnaBloques26" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -25 )
+[node name="ColumnaBloques27" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -0.2, 25 )
+
+[node name="ColumnaBloques28" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.2, 25 )
+
+[node name="ColumnaBloques29" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -0.2, 25 )
+
+[node name="ColumnaBloques30" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -0.2, 25 )
+
+[node name="ColumnaBloques31" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.2, 25 )
+
+[node name="ColumnaBloques32" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.2, 25 )
+
+[node name="ColumnaBloques33" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -0.2, 25 )
+
+[node name="ColumnaBloques34" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.2, 25 )
+
+[node name="ColumnaBloques35" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.2, 25 )
+
+[node name="ColumnaBloques36" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -0.2, 25 )
+
+[node name="ColumnaBloques37" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.2, 25 )
+
+[node name="ColumnaBloques38" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.2, 25 )
+
+[node name="ColumnaBloques39" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.2, 25 )
+
+[node name="ColumnaBloques40" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.2, 25 )
+
+[node name="ColumnaBloques41" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.2, 25 )
+
+[node name="ColumnaBloques42" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.2, 25 )
+
+[node name="ColumnaBloques43" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.2, 25 )
+
+[node name="ColumnaBloques44" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.2, 25 )
+
+[node name="ColumnaBloques45" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.2, 25 )
+
+[node name="ColumnaBloques46" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.2, 25 )
+
+[node name="ColumnaBloques47" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.2, 25 )
+
+[node name="ColumnaBloques48" parent="Bordes/Norte" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.2, 25 )
+
+[node name="Sur" type="Spatial" parent="Bordes"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -49.9089 )
+
+[node name="ColumnaBloques" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 25 )
+
+[node name="ColumnaBloques2" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.2, 25 )
+
+[node name="ColumnaBloques3" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.2, 25 )
+
+[node name="ColumnaBloques4" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.2, 25 )
+
+[node name="ColumnaBloques5" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.2, 25 )
+
+[node name="ColumnaBloques6" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.2, 25 )
+
+[node name="ColumnaBloques7" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.2, 25 )
+
+[node name="ColumnaBloques8" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -0.2, 25 )
+
+[node name="ColumnaBloques9" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.2, 25 )
+
+[node name="ColumnaBloques10" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.2, 25 )
+
+[node name="ColumnaBloques11" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.2, 25 )
+
+[node name="ColumnaBloques12" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.2, 25 )
+
+[node name="ColumnaBloques13" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.2, 25 )
+
+[node name="ColumnaBloques14" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.2, 25 )
+
+[node name="ColumnaBloques15" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -0.2, 25 )
+
+[node name="ColumnaBloques16" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -0.2, 25 )
+
+[node name="ColumnaBloques17" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -0.2, 25 )
+
+[node name="ColumnaBloques18" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -0.2, 25 )
+
+[node name="ColumnaBloques19" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.2, 25 )
+
+[node name="ColumnaBloques20" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -0.2, 25 )
+
+[node name="ColumnaBloques21" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.2, 25 )
+
+[node name="ColumnaBloques22" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -0.2, 25 )
+
+[node name="ColumnaBloques23" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, -0.2, 25 )
+
+[node name="ColumnaBloques24" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -0.2, 25 )
+
+[node name="ColumnaBloques50" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -0.2, 25 )
 
 [node name="ColumnaBloques51" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.2, -25 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -0.2, 25 )
 
-[node name="ColumnaBloques52" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.2, -25 )
+[node name="ColumnaBloques25" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -0.2, 25 )
 
-[node name="ColumnaBloques53" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.2, -25 )
+[node name="ColumnaBloques49" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -0.2, 25 )
 
-[node name="ColumnaBloques54" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.2, -25 )
+[node name="ColumnaBloques26" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23, -0.2, 25 )
 
-[node name="ColumnaBloques55" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.2, -25 )
+[node name="ColumnaBloques27" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -0.2, 25 )
 
-[node name="ColumnaBloques56" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.2, -25 )
+[node name="ColumnaBloques28" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.2, 25 )
 
-[node name="ColumnaBloques57" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -0.2, -25 )
+[node name="ColumnaBloques29" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -0.2, 25 )
 
-[node name="ColumnaBloques58" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.2, -25 )
+[node name="ColumnaBloques30" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -0.2, 25 )
 
-[node name="ColumnaBloques59" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.2, -25 )
+[node name="ColumnaBloques31" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.2, 25 )
 
-[node name="ColumnaBloques60" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.2, -25 )
+[node name="ColumnaBloques32" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.2, 25 )
 
-[node name="ColumnaBloques61" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.2, -25 )
+[node name="ColumnaBloques33" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -0.2, 25 )
 
-[node name="ColumnaBloques62" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.2, -25 )
+[node name="ColumnaBloques34" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.2, 25 )
 
-[node name="ColumnaBloques63" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.2, -25 )
+[node name="ColumnaBloques35" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.2, 25 )
 
-[node name="ColumnaBloques64" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -0.2, -25 )
+[node name="ColumnaBloques36" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -0.2, 25 )
 
-[node name="ColumnaBloques65" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -0.2, -25 )
+[node name="ColumnaBloques37" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.2, 25 )
 
-[node name="ColumnaBloques66" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -0.2, -25 )
+[node name="ColumnaBloques38" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.2, 25 )
 
-[node name="ColumnaBloques67" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -0.2, -25 )
+[node name="ColumnaBloques39" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.2, 25 )
 
-[node name="ColumnaBloques68" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.2, -25 )
+[node name="ColumnaBloques40" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.2, 25 )
 
-[node name="ColumnaBloques69" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -0.2, -25 )
+[node name="ColumnaBloques41" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.2, 25 )
 
-[node name="ColumnaBloques70" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.2, -25 )
+[node name="ColumnaBloques42" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.2, 25 )
 
-[node name="ColumnaBloques71" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -0.2, -25 )
+[node name="ColumnaBloques43" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.2, 25 )
 
-[node name="ColumnaBloques72" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, -0.2, -25 )
+[node name="ColumnaBloques44" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.2, 25 )
 
-[node name="ColumnaBloques73" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -0.2, -25 )
+[node name="ColumnaBloques45" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.2, 25 )
 
-[node name="ColumnaBloques74" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -0.2, -25 )
+[node name="ColumnaBloques46" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.2, 25 )
 
-[node name="ColumnaBloques75" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.2, -25 )
+[node name="ColumnaBloques47" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.2, 25 )
 
-[node name="ColumnaBloques76" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.2, -25 )
-
-[node name="ColumnaBloques77" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.2, -25 )
-
-[node name="ColumnaBloques78" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.2, -25 )
-
-[node name="ColumnaBloques79" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.2, -25 )
-
-[node name="ColumnaBloques80" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.2, -25 )
-
-[node name="ColumnaBloques81" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.2, -25 )
-
-[node name="ColumnaBloques82" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.2, -25 )
-
-[node name="ColumnaBloques83" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.2, -25 )
-
-[node name="ColumnaBloques84" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.2, -25 )
-
-[node name="ColumnaBloques85" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.2, -25 )
-
-[node name="ColumnaBloques86" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -0.2, -25 )
-
-[node name="ColumnaBloques87" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.2, -25 )
-
-[node name="ColumnaBloques88" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -0.2, -25 )
-
-[node name="ColumnaBloques89" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -0.2, -25 )
-
-[node name="ColumnaBloques90" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.2, -25 )
-
-[node name="ColumnaBloques91" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.2, -25 )
-
-[node name="ColumnaBloques92" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -0.2, -25 )
-
-[node name="ColumnaBloques93" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.2, -25 )
-
-[node name="ColumnaBloques94" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.2, -25 )
-
-[node name="ColumnaBloques95" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -0.2, -25 )
-
-[node name="ColumnaBloques96" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.2, -25 )
-
-[node name="ColumnaBloques97" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -0.2, -25 )
-
-[node name="ColumnaBloques98" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23, -0.2, -25 )
-
-[node name="ColumnaBloques99" parent="Bordes/Sur" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -0.2, -25 )
+[node name="ColumnaBloques48" parent="Bordes/Sur" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.2, 25 )
 
 [node name="Este" type="Spatial" parent="Bordes"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
+transform = Transform( 1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0 )
 
-[node name="ColumnaBloques26" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -25 )
+[node name="ColumnaBloques" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 25 )
+
+[node name="ColumnaBloques2" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.2, 25 )
+
+[node name="ColumnaBloques3" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.2, 25 )
+
+[node name="ColumnaBloques4" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.2, 25 )
+
+[node name="ColumnaBloques5" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.2, 25 )
+
+[node name="ColumnaBloques6" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.2, 25 )
+
+[node name="ColumnaBloques7" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.2, 25 )
+
+[node name="ColumnaBloques8" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -0.2, 25 )
+
+[node name="ColumnaBloques9" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.2, 25 )
+
+[node name="ColumnaBloques10" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.2, 25 )
+
+[node name="ColumnaBloques11" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.2, 25 )
+
+[node name="ColumnaBloques12" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.2, 25 )
+
+[node name="ColumnaBloques13" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.2, 25 )
+
+[node name="ColumnaBloques14" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.2, 25 )
+
+[node name="ColumnaBloques15" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -0.2, 25 )
+
+[node name="ColumnaBloques16" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -0.2, 25 )
+
+[node name="ColumnaBloques17" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -0.2, 25 )
+
+[node name="ColumnaBloques18" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -0.2, 25 )
+
+[node name="ColumnaBloques19" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.2, 25 )
+
+[node name="ColumnaBloques20" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -0.2, 25 )
+
+[node name="ColumnaBloques21" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.2, 25 )
+
+[node name="ColumnaBloques22" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -0.2, 25 )
+
+[node name="ColumnaBloques23" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, -0.2, 25 )
+
+[node name="ColumnaBloques24" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -0.2, 25 )
+
+[node name="ColumnaBloques50" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -0.2, 25 )
 
 [node name="ColumnaBloques51" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.2, -25 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -0.2, 25 )
 
-[node name="ColumnaBloques52" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.2, -25 )
+[node name="ColumnaBloques25" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -0.2, 25 )
 
-[node name="ColumnaBloques53" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.2, -25 )
+[node name="ColumnaBloques49" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -0.2, 25 )
 
-[node name="ColumnaBloques54" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.2, -25 )
+[node name="ColumnaBloques26" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23, -0.2, 25 )
 
-[node name="ColumnaBloques55" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.2, -25 )
+[node name="ColumnaBloques27" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -0.2, 25 )
 
-[node name="ColumnaBloques56" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.2, -25 )
+[node name="ColumnaBloques28" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.2, 25 )
 
-[node name="ColumnaBloques57" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -0.2, -25 )
+[node name="ColumnaBloques29" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -0.2, 25 )
 
-[node name="ColumnaBloques58" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.2, -25 )
+[node name="ColumnaBloques30" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -0.2, 25 )
 
-[node name="ColumnaBloques59" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.2, -25 )
+[node name="ColumnaBloques31" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.2, 25 )
 
-[node name="ColumnaBloques60" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.2, -25 )
+[node name="ColumnaBloques32" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.2, 25 )
 
-[node name="ColumnaBloques61" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.2, -25 )
+[node name="ColumnaBloques33" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -0.2, 25 )
 
-[node name="ColumnaBloques62" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.2, -25 )
+[node name="ColumnaBloques34" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.2, 25 )
 
-[node name="ColumnaBloques63" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.2, -25 )
+[node name="ColumnaBloques35" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.2, 25 )
 
-[node name="ColumnaBloques64" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -0.2, -25 )
+[node name="ColumnaBloques36" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -0.2, 25 )
 
-[node name="ColumnaBloques65" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -0.2, -25 )
+[node name="ColumnaBloques37" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.2, 25 )
 
-[node name="ColumnaBloques66" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -0.2, -25 )
+[node name="ColumnaBloques38" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.2, 25 )
 
-[node name="ColumnaBloques67" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -0.2, -25 )
+[node name="ColumnaBloques39" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.2, 25 )
 
-[node name="ColumnaBloques68" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.2, -25 )
+[node name="ColumnaBloques40" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.2, 25 )
 
-[node name="ColumnaBloques69" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -0.2, -25 )
+[node name="ColumnaBloques41" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.2, 25 )
 
-[node name="ColumnaBloques70" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.2, -25 )
+[node name="ColumnaBloques42" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.2, 25 )
 
-[node name="ColumnaBloques71" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -0.2, -25 )
+[node name="ColumnaBloques43" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.2, 25 )
 
-[node name="ColumnaBloques72" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, -0.2, -25 )
+[node name="ColumnaBloques44" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.2, 25 )
 
-[node name="ColumnaBloques73" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -0.2, -25 )
+[node name="ColumnaBloques45" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.2, 25 )
 
-[node name="ColumnaBloques74" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -0.2, -25 )
+[node name="ColumnaBloques46" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.2, 25 )
 
-[node name="ColumnaBloques75" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.2, -25 )
+[node name="ColumnaBloques47" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.2, 25 )
 
-[node name="ColumnaBloques76" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.2, -25 )
-
-[node name="ColumnaBloques77" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.2, -25 )
-
-[node name="ColumnaBloques78" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.2, -25 )
-
-[node name="ColumnaBloques79" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.2, -25 )
-
-[node name="ColumnaBloques80" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.2, -25 )
-
-[node name="ColumnaBloques81" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.2, -25 )
-
-[node name="ColumnaBloques82" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.2, -25 )
-
-[node name="ColumnaBloques83" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.2, -25 )
-
-[node name="ColumnaBloques84" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.2, -25 )
-
-[node name="ColumnaBloques85" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.2, -25 )
-
-[node name="ColumnaBloques86" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -0.2, -25 )
-
-[node name="ColumnaBloques87" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.2, -25 )
-
-[node name="ColumnaBloques88" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -0.2, -25 )
-
-[node name="ColumnaBloques89" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -0.2, -25 )
-
-[node name="ColumnaBloques90" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.2, -25 )
-
-[node name="ColumnaBloques91" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.2, -25 )
-
-[node name="ColumnaBloques92" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -0.2, -25 )
-
-[node name="ColumnaBloques93" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.2, -25 )
-
-[node name="ColumnaBloques94" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.2, -25 )
-
-[node name="ColumnaBloques95" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -0.2, -25 )
-
-[node name="ColumnaBloques96" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.2, -25 )
-
-[node name="ColumnaBloques97" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -0.2, -25 )
-
-[node name="ColumnaBloques98" parent="Bordes/Este" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23, -0.2, -25 )
+[node name="ColumnaBloques48" parent="Bordes/Este" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.2, 25 )
 
 [node name="Oeste" type="Spatial" parent="Bordes"]
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 50, 0, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0 )
 
-[node name="ColumnaBloques26" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -25 )
+[node name="ColumnaBloques" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 25 )
 
-[node name="ColumnaBloques27" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -0.2, -25 )
+[node name="ColumnaBloques2" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.2, 25 )
+
+[node name="ColumnaBloques3" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.2, 25 )
+
+[node name="ColumnaBloques4" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.2, 25 )
+
+[node name="ColumnaBloques5" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.2, 25 )
+
+[node name="ColumnaBloques6" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.2, 25 )
+
+[node name="ColumnaBloques7" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.2, 25 )
+
+[node name="ColumnaBloques8" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -0.2, 25 )
+
+[node name="ColumnaBloques9" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.2, 25 )
+
+[node name="ColumnaBloques10" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.2, 25 )
+
+[node name="ColumnaBloques11" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.2, 25 )
+
+[node name="ColumnaBloques12" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.2, 25 )
+
+[node name="ColumnaBloques13" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.2, 25 )
+
+[node name="ColumnaBloques14" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.2, 25 )
+
+[node name="ColumnaBloques15" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -0.2, 25 )
+
+[node name="ColumnaBloques16" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -0.2, 25 )
+
+[node name="ColumnaBloques17" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -0.2, 25 )
+
+[node name="ColumnaBloques18" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -0.2, 25 )
+
+[node name="ColumnaBloques19" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.2, 25 )
+
+[node name="ColumnaBloques20" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -0.2, 25 )
+
+[node name="ColumnaBloques21" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.2, 25 )
+
+[node name="ColumnaBloques22" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -0.2, 25 )
+
+[node name="ColumnaBloques23" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, -0.2, 25 )
+
+[node name="ColumnaBloques24" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -0.2, 25 )
+
+[node name="ColumnaBloques50" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -0.2, 25 )
 
 [node name="ColumnaBloques51" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.2, -25 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 25, -0.2, 25 )
 
-[node name="ColumnaBloques52" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.2, -25 )
+[node name="ColumnaBloques25" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -0.2, 25 )
 
-[node name="ColumnaBloques53" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -0.2, -25 )
+[node name="ColumnaBloques49" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -0.2, 25 )
 
-[node name="ColumnaBloques54" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -0.2, -25 )
+[node name="ColumnaBloques26" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23, -0.2, 25 )
 
-[node name="ColumnaBloques55" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -0.2, -25 )
+[node name="ColumnaBloques27" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -0.2, 25 )
 
-[node name="ColumnaBloques56" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 6, -0.2, -25 )
+[node name="ColumnaBloques28" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.2, 25 )
 
-[node name="ColumnaBloques57" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -0.2, -25 )
+[node name="ColumnaBloques29" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -0.2, 25 )
 
-[node name="ColumnaBloques58" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, -0.2, -25 )
+[node name="ColumnaBloques30" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -0.2, 25 )
 
-[node name="ColumnaBloques59" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -0.2, -25 )
+[node name="ColumnaBloques31" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.2, 25 )
 
-[node name="ColumnaBloques60" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 10, -0.2, -25 )
+[node name="ColumnaBloques32" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.2, 25 )
 
-[node name="ColumnaBloques61" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 11, -0.2, -25 )
+[node name="ColumnaBloques33" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -0.2, 25 )
 
-[node name="ColumnaBloques62" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.2, -25 )
+[node name="ColumnaBloques34" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.2, 25 )
 
-[node name="ColumnaBloques63" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -0.2, -25 )
+[node name="ColumnaBloques35" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.2, 25 )
 
-[node name="ColumnaBloques64" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -0.2, -25 )
+[node name="ColumnaBloques36" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -0.2, 25 )
 
-[node name="ColumnaBloques65" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 15, -0.2, -25 )
+[node name="ColumnaBloques37" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.2, 25 )
 
-[node name="ColumnaBloques66" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, -0.2, -25 )
+[node name="ColumnaBloques38" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.2, 25 )
 
-[node name="ColumnaBloques67" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 17, -0.2, -25 )
+[node name="ColumnaBloques39" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.2, 25 )
 
-[node name="ColumnaBloques68" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 18, -0.2, -25 )
+[node name="ColumnaBloques40" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.2, 25 )
 
-[node name="ColumnaBloques69" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 19, -0.2, -25 )
+[node name="ColumnaBloques41" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.2, 25 )
 
-[node name="ColumnaBloques70" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 20, -0.2, -25 )
+[node name="ColumnaBloques42" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.2, 25 )
 
-[node name="ColumnaBloques71" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 21, -0.2, -25 )
+[node name="ColumnaBloques43" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.2, 25 )
 
-[node name="ColumnaBloques72" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 22, -0.2, -25 )
+[node name="ColumnaBloques44" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.2, 25 )
 
-[node name="ColumnaBloques73" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 23, -0.2, -25 )
+[node name="ColumnaBloques45" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.2, 25 )
 
-[node name="ColumnaBloques74" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 24, -0.2, -25 )
+[node name="ColumnaBloques46" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.2, 25 )
 
-[node name="ColumnaBloques75" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -0.2, -25 )
+[node name="ColumnaBloques47" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.2, 25 )
 
-[node name="ColumnaBloques76" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -10, -0.2, -25 )
+[node name="ColumnaBloques48" parent="Bordes/Oeste" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.2, 25 )
 
-[node name="ColumnaBloques77" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -0.2, -25 )
+[node name="Bloques" type="Spatial" parent="."]
 
-[node name="ColumnaBloques78" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, -0.2, -25 )
+[node name="BloqueHexagono" parent="Bloques" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -3 )
 
-[node name="ColumnaBloques79" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -0.2, -25 )
-
-[node name="ColumnaBloques80" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, -0.2, -25 )
-
-[node name="ColumnaBloques81" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -5, -0.2, -25 )
-
-[node name="ColumnaBloques82" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -0.2, -25 )
-
-[node name="ColumnaBloques83" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3, -0.2, -25 )
-
-[node name="ColumnaBloques84" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.2, -25 )
-
-[node name="ColumnaBloques85" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -0.2, -25 )
-
-[node name="ColumnaBloques86" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -22, -0.2, -25 )
-
-[node name="ColumnaBloques87" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -0.2, -25 )
-
-[node name="ColumnaBloques88" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -0.2, -25 )
-
-[node name="ColumnaBloques89" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -19, -0.2, -25 )
-
-[node name="ColumnaBloques90" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -0.2, -25 )
-
-[node name="ColumnaBloques91" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -0.2, -25 )
-
-[node name="ColumnaBloques92" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -16, -0.2, -25 )
-
-[node name="ColumnaBloques93" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -0.2, -25 )
-
-[node name="ColumnaBloques94" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, -0.2, -25 )
-
-[node name="ColumnaBloques95" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -13, -0.2, -25 )
-
-[node name="ColumnaBloques96" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.2, -25 )
-
-[node name="ColumnaBloques97" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -24, -0.2, -25 )
-
-[node name="ColumnaBloques98" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -23, -0.2, -25 )
-
-[node name="ColumnaBloques99" parent="Bordes/Oeste" instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -0.2, -25 )
-
-[node name="Plataformas" type="Spatial" parent="."]
-
-[node name="BloqueLargo" parent="Plataformas" instance=ExtResource( 3 )]
-
-[node name="BloquePendiente" parent="Plataformas" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0 )
-
-[node name="BloqueMedio" parent="Plataformas" instance=ExtResource( 7 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3 )
-
-[node name="BloqueFinal" parent="Plataformas" instance=ExtResource( 6 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3 )
-
-[node name="BloqueHexagono" parent="Plataformas" instance=ExtResource( 5 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2 )
-
-[node name="BloqueLargo2" parent="Plataformas" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
-
-[node name="BloqueLargo3" parent="Plataformas" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0 )
-
-[node name="BloqueLargo4" parent="Plataformas" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 0 )
-
-[node name="BloqueLargo5" parent="Plataformas" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0 )
-
-[node name="BloqueLargo6" parent="Plataformas" instance=ExtResource( 3 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
-
-[node name="Godotin" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2, 0, 0 )
-
-[node name="PlayerDummy" parent="." instance=ExtResource( 2 )]
-transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2, 0, 0 )
+[node name="BloqueCesped" parent="Bloques" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.54989 )
 
 [node name="ContenedorMonedas" type="Node" parent="."]
 
-[node name="MonedaDorada" parent="ContenedorMonedas" instance=ExtResource( 8 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -3.75361, 0.919806, 0 )
+[node name="MonedaDorada2" parent="ContenedorMonedas" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.159784, 2.28548, 3.29767 )
 
-[node name="Sierra" parent="." instance=ExtResource( 9 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 0 )
+[node name="Sierra" parent="." instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 8.15454 )
 
-[node name="Portal" parent="." instance=ExtResource( 11 )]
-transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 8 )
-
-[editable path="Bordes/Sur/ColumnaBloques26"]
+[node name="Portal" parent="." instance=ExtResource( 12 )]
+transform = Transform( 1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 10.5 )

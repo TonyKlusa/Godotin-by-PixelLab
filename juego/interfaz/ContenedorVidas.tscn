@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Juego/Interfaz/ContenedorInfo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://juego/interfaz/lifes.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 65, 65 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 83, -14 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "animacion_vidas"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 65, 65 ), Vector2( 68, 68 ), Vector2( 65, 65 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureRect:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 62, 3 ), Vector2( 63, 0 ), Vector2( 62, 3 ) ]
+}
+
+[node name="ContenedorVidas" instance=ExtResource( 1 )]
+margin_right = 147.0
+margin_bottom = 54.0
+texture = null
+
+[node name="TextureRect" parent="." index="0"]
+anchor_left = 0.452
+anchor_top = -0.122
+anchor_right = 0.897
+anchor_bottom = 1.204
+margin_left = 83.0
+margin_top = -14.0
+margin_right = 148.0
+margin_bottom = 51.0
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" parent="." index="2"]
+autoplay = "animacion_vidas"
+anims/RESET = SubResource( 2 )
+anims/animacion_vidas = SubResource( 1 )

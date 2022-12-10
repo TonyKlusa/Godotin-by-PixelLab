@@ -29,3 +29,9 @@ func _on_Ajustes_mouse_entered() -> void:
 
 func _on_BotonSalir_mouse_entered() -> void:
 	$BotonHover.play()
+
+
+func _on_BotonCargar_pressed() -> void:
+	var cargar: GuardarCargar = GuardarCargar.new()
+	cargar.cargar_datos_juego()
+	get_tree().change_scene(pantalla_carga)

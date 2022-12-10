@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://recursos/fuentes/Kenney Future.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://juego/player/GodotinDummy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://juego/menus/PantallaCarga.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="ViewportTexture" id=2]
+viewport_path = NodePath("Viewport")
+
+[node name="PantallaCarga" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -399.0
+margin_top = 69.0
+margin_right = 446.0
+margin_bottom = 144.0
+custom_fonts/font = SubResource( 1 )
+text = "Tip:  VIVIR ES GANAR, MORIR ES PERDER"
+align = 1
+autowrap = true
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 400, 400 )
+own_world = true
+transparent_bg = true
+msaa = 1
+usage = 3
+render_target_v_flip = true
+
+[node name="Godotin" parent="Viewport" instance=ExtResource( 2 )]
+cantidad_rotacion = 35
+
+[node name="Camera" type="Camera" parent="Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 1.5 )
+
+[node name="OmniLight" type="OmniLight" parent="Viewport"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0.5 )
+light_energy = 8.0
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 204, 373 )
+texture = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -85,6 +85,8 @@ func cargar_resoluciones() ->void:
 		opcion_resoluciones.add_item(resolucion)
 
 func _on_BotonRegresar_pressed() -> void:
+	var guardar: GuardarCargar = GuardarCargar.new()
+	guardar.cargar_datos_configuracion()
 	get_tree().change_scene (menu_inicial)
 
 

@@ -21,14 +21,12 @@ surfaces/0 = {
 extents = Vector3( 0.5, 0.5, 0.5 )
 
 [node name="BloqueTierra" type="StaticBody"]
-collision_layer = 2
-collision_mask = 7
+collision_layer = 4
 
 [node name="tmpParent" type="Spatial" parent="."]
 
 [node name="blockDirt" type="MeshInstance" parent="tmpParent"]
 mesh = SubResource( 1 )
-material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )

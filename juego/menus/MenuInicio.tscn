@@ -1,0 +1,129 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://juego/font/ROBOTECH GP.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://juego/menus/MenuInicio.gd" type="Script" id=2]
+[ext_resource path="res://recursos/audio/sfx/select_2.wav" type="AudioStream" id=3]
+[ext_resource path="res://recursos/botones/BotonNormal.tres" type="StyleBox" id=4]
+[ext_resource path="res://recursos/botones/BotonSalirNormal.tres" type="StyleBox" id=5]
+[ext_resource path="res://juego/SFX/BotonHover.wav" type="AudioStream" id=6]
+[ext_resource path="res://juego/menus/Fondo.tscn" type="PackedScene" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 125
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 75
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0705882, 0.803922, 0.937255, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.0705882, 0.803922, 0.937255, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.968627, 0.156863, 0.054902, 1 )
+
+[node name="MenuInicio" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+menu_ajustes = "res://juego/menus/MenuAjustes.tscn"
+nivel_inicial = "res://juego/niveles/Nivel1.tscn"
+pantalla_carga = "res://juego/menus/PantallaCarga.tscn"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Fondo" parent="." instance=ExtResource( 7 )]
+
+[node name="Titulo" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -244.0
+margin_top = 38.0
+margin_right = 224.0
+margin_bottom = 179.0
+custom_fonts/font = SubResource( 1 )
+text = "GODOTECH"
+align = 1
+
+[node name="ContenedorPrincipal" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -173.0
+margin_top = -129.0
+margin_right = 163.0
+margin_bottom = 231.0
+rect_clip_content = true
+
+[node name="BotonCargar" type="Button" parent="ContenedorPrincipal"]
+margin_right = 336.0
+margin_bottom = 85.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+text = "CARGAR"
+
+[node name="BotonNuevo2" type="Button" parent="ContenedorPrincipal"]
+margin_top = 89.0
+margin_right = 336.0
+margin_bottom = 174.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+text = "NUEVO"
+
+[node name="BotonOpciones" type="Button" parent="ContenedorPrincipal"]
+margin_top = 178.0
+margin_right = 336.0
+margin_bottom = 263.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/normal = ExtResource( 4 )
+text = "OPCIONES"
+
+[node name="HSeparator" type="HSeparator" parent="ContenedorPrincipal"]
+margin_top = 267.0
+margin_right = 336.0
+margin_bottom = 271.0
+
+[node name="BotonSalir" type="Button" parent="ContenedorPrincipal"]
+margin_top = 275.0
+margin_right = 336.0
+margin_bottom = 360.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 6 )
+custom_styles/normal = ExtResource( 5 )
+text = "SALIR"
+
+[node name="BotonSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="BotonHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "SFX"
+
+[connection signal="mouse_entered" from="ContenedorPrincipal/BotonCargar" to="." method="_on_BotonNuevo_mouse_entered"]
+[connection signal="pressed" from="ContenedorPrincipal/BotonCargar" to="." method="_on_BotonCargar_pressed"]
+[connection signal="mouse_entered" from="ContenedorPrincipal/BotonNuevo2" to="." method="_on_BotonNuevo_mouse_entered"]
+[connection signal="pressed" from="ContenedorPrincipal/BotonNuevo2" to="." method="_on_BotonNuevo_pressed"]
+[connection signal="mouse_entered" from="ContenedorPrincipal/BotonOpciones" to="." method="_on_BotonOpciones_mouse_entered"]
+[connection signal="pressed" from="ContenedorPrincipal/BotonOpciones" to="." method="_on_BotonOpciones_pressed"]
+[connection signal="mouse_entered" from="ContenedorPrincipal/BotonSalir" to="." method="_on_BotonSalir_mouse_entered"]
+[connection signal="pressed" from="ContenedorPrincipal/BotonSalir" to="." method="_on_BotonSalir_pressed"]

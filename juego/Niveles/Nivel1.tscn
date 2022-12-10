@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://juego/niveles/NivelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://juego/items/MonedaDorada.tscn" type="PackedScene" id=2]
+[ext_resource path="res://juego/bloques/MedioBloqueCesped.tscn" type="PackedScene" id=3]
+[ext_resource path="res://juego/objetos/danio/Sierra.tscn" type="PackedScene" id=4]
+[ext_resource path="res://juego/objetos/danio/Sierra_movil.tscn" type="PackedScene" id=5]
+
+[node name="Nivel1" instance=ExtResource( 1 )]
+__meta__ = {
+"_edit_horizontal_guides_": [ 156.0 ]
+}
+numero_nivel = 1
+proximo_nivel = "res://juego/niveles/Nivel2.tscn"
+menu_game_over = "res://juego/menus/MenuGameOver.tscn"
+
+[node name="ColorRect" parent="." index="1"]
+anchor_right = 1.006
+anchor_bottom = 0.248
+margin_right = 0.23999
+margin_bottom = 0.279999
+
+[node name="Label" parent="ColorRect" index="0"]
+align = 1
+valign = 1
+
+[node name="Player" parent="." index="3"]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -5.21895 )
+
+[node name="MedioBloqueCesped" parent="Bloques" index="0" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.886071, 3.8482 )
+
+[node name="MedioBloqueCesped2" parent="Bloques" index="1" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.318524, 1.72948 )
+
+[node name="MonedaDorada" parent="ContenedorMonedas" index="0" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2566, 1.83974 )
+
+[node name="Sierra2" parent="ContenedorSierras" index="0" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0505729, 0.899917, 2.90632 )
+
+[node name="Sierra_movil" parent="ContenedorSierras" index="1" instance=ExtResource( 5 )]
+
+[node name="Portal" parent="." index="10"]
+transform = Transform( 1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -0.0293846, 1.43237, 4.18147 )

@@ -1,0 +1,72 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://recursos/hud/bg_layer1.png" type="Texture" id=1]
+[ext_resource path="res://recursos/fuentes/Kenney Future.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://recursos/hud/coin_gold.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 28
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "default"
+length = 1.6
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("MarginContainer/Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.588164, 0.588164 ), Vector2( 0.622, 0.622 ), Vector2( 0.588164, 0.588164 ), Vector2( 0.544, 0.544 ), Vector2( 0.588164, 0.588164 ) ]
+}
+
+[node name="ContenedorMonedas" type="NinePatchRect"]
+self_modulate = Color( 0.988235, 0.101961, 0.101961, 0.454902 )
+margin_top = -1.0
+margin_right = 117.0
+margin_bottom = 29.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Cantidad" type="Label" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 9.21159
+margin_top = -16.4204
+margin_right = 73.2116
+margin_bottom = 15.5796
+custom_fonts/font = SubResource( 1 )
+text = "100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -31.0
+margin_top = -15.5
+margin_bottom = 15.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="MarginContainer"]
+position = Vector2( 8.91291, 15.7855 )
+scale = Vector2( 0.588164, 0.588164 )
+texture = ExtResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/default = SubResource( 2 )

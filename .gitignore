@@ -10,6 +10,8 @@ export_presets.cfg
 .mono/
 data_*/
 
-# Carpetas extras para ignorar de godotin
-recursos/
-
+# Otras carpetas para ignorar (descomentar segun necesidad)
+builds/
+#Documentation/
+TemporalAssets/
+#recursos

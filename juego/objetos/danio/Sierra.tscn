@@ -1,12 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://recursos/modelos/danio/metal.material" type="Material" id=1]
 [ext_resource path="res://juego/SFX/Chainsaw.ogg" type="AudioStream" id=2]
 [ext_resource path="res://juego/objetos/danio/Sierra.gd" type="Script" id=3]
-
-[sub_resource type="CylinderShape" id=2]
-height = 0.13
-radius = 0.35
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "saw_Mesh saw"
@@ -23,6 +19,10 @@ surfaces/0 = {
 "vertex_count": 256
 }
 
+[sub_resource type="CylinderShape" id=2]
+height = 0.153805
+radius = 0.322855
+
 [sub_resource type="Animation" id=3]
 length = 0.001
 tracks/0/type = "value"
@@ -37,21 +37,10 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("AudioStreamPlayer3D:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
 
 [sub_resource type="Animation" id=4]
 resource_name = "activada"
+length = 0.5
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("tmpParent/saw:rotation_degrees")
@@ -60,76 +49,34 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 360 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AudioStreamPlayer3D:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "muerte"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("tmpParent/saw:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 360 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AudioStreamPlayer3D:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray(  ),
-"transitions": PoolRealArray(  ),
-"update": 1,
-"values": [  ]
+"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0, 180 ) ]
 }
 
 [node name="Sierra" type="Area"]
-collision_layer = 8
+collision_layer = 0
 script = ExtResource( 3 )
-
-[node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
-shape = SubResource( 2 )
 
 [node name="tmpParent" type="Spatial" parent="."]
 
 [node name="saw" type="MeshInstance" parent="tmpParent"]
 mesh = SubResource( 1 )
 
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.000498891, 0, 0.00815868 )
+shape = SubResource( 2 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "activada"
 anims/RESET = SubResource( 3 )
 anims/activada = SubResource( 4 )
-anims/muerte = SubResource( 5 )
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource( 2 )
-unit_db = 1.0
-max_db = 4.0
+attenuation_model = 1
 autoplay = true
 bus = "SFX"
 
-[connection signal="body_entered" from="." to="." method="_on_Sierra_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

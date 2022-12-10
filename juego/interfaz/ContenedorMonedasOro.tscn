@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Juego/Interfaz/ContenedorMonedas.tscn" type="PackedScene" id=1]
+
+[node name="ContenedorMonedasOro" instance=ExtResource( 1 )]
+texture = null
+
+[node name="Cantidad" parent="." index="0"]
+text = "1"
+align = 2

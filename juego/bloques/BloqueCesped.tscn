@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://recursos/modelos/bloques/dirt.material" type="Material" id=1]
-[ext_resource path="res://recursos/modelos/bloques/grass.material" type="Material" id=2]
+[ext_resource path="res://recursos/modelos/bloques/grass.material" type="Material" id=1]
+[ext_resource path="res://recursos/modelos/bloques/dirt.material" type="Material" id=2]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "block_Mesh block"
@@ -12,7 +12,7 @@ surfaces/0 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 342,
-"material": ExtResource( 2 ),
+"material": ExtResource( 1 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 168
@@ -24,7 +24,7 @@ surfaces/1 = {
 "blend_shape_data": [  ],
 "format": 2194711,
 "index_count": 30,
-"material": ExtResource( 1 ),
+"material": ExtResource( 2 ),
 "primitive": 4,
 "skeleton_aabb": [  ],
 "vertex_count": 168
@@ -35,15 +35,12 @@ extents = Vector3( 0.5, 0.5, 0.5 )
 
 [node name="BloqueCesped" type="StaticBody"]
 collision_layer = 4
-collision_mask = 7
 
 [node name="tmpParent" type="Spatial" parent="."]
 
 [node name="block" type="MeshInstance" parent="tmpParent"]
 mesh = SubResource( 1 )
-material/0 = null
-material/1 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.505705, 0 )
 shape = SubResource( 2 )

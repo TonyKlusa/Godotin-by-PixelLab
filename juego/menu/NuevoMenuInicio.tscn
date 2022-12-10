@@ -77,7 +77,6 @@ margin_bottom = 158.8
 margin_top = 0.0
 margin_right = 292.0
 margin_bottom = 74.0
-disabled = true
 text = "Cargar"
 
 [node name="BotonNuevo" parent="ContenedorPrincipal" instance=ExtResource( 5 )]
@@ -119,7 +118,7 @@ stream = ExtResource( 6 )
 volume_db = -18.0
 bus = "SFX"
 
-[connection signal="pressed" from="ContenedorPrincipal/BotonCargar" to="." method="_on_BotonMenu_pressed"]
+[connection signal="pressed" from="ContenedorPrincipal/BotonCargar" to="." method="_on_BotonCargar_pressed"]
 [connection signal="mouse_entered" from="ContenedorPrincipal/BotonNuevo" to="." method="_on_BotonNuevo_mouse_entered"]
 [connection signal="pressed" from="ContenedorPrincipal/BotonNuevo" to="." method="_on_BotonNuevo_pressed"]
 [connection signal="mouse_entered" from="ContenedorPrincipal/Ajustes" to="." method="_on_Ajustes_mouse_entered"]

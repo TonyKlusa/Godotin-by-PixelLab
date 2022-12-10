@@ -7,10 +7,9 @@ data = PoolVector3Array( 0.5, 0, -0.2887, 0.5, 0, 0.2887, 0.4, 0.427, 0.2309, 0.
 
 [node name="BloqueHexagono" instance=ExtResource( 1 )]
 collision_layer = 2
-collision_mask = 7
-
-[node name="CollisionShape" type="CollisionShape" parent="." index="0"]
-shape = SubResource( 1 )
 
 [node name="blockHexagonLow" parent="tmpParent" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="." index="1"]
+shape = SubResource( 1 )

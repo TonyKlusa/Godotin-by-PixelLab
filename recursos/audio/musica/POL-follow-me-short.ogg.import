@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/POL-follow-me-short.ogg-ccb54cde57e27f2b0136105ccc2db394.oggstr"
+
+[deps]
+
+source_file="res://recursos/audio/musica/POL-follow-me-short.ogg"
+dest_files=[ "res://.import/POL-follow-me-short.ogg-ccb54cde57e27f2b0136105ccc2db394.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

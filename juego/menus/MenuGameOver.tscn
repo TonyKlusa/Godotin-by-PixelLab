@@ -1,0 +1,121 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://juego/SFX/BotonHover.wav" type="AudioStream" id=1]
+[ext_resource path="res://juego/font/ROBOTECH GP.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://recursos/botones/BotonSalirNormal.tres" type="StyleBox" id=3]
+[ext_resource path="res://recursos/botones/BotonNormal.tres" type="StyleBox" id=4]
+[ext_resource path="res://juego/menus/MenuGameOver.gd" type="Script" id=5]
+[ext_resource path="res://juego/menus/Fondo.tscn" type="PackedScene" id=6]
+[ext_resource path="res://juego/SFX/GameOverMusica.ogg" type="AudioStream" id=7]
+[ext_resource path="res://juego/menus/godotin_sad.png" type="Texture" id=8]
+
+[sub_resource type="DynamicFont" id=2]
+size = 80
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 61
+font_data = ExtResource( 2 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.0705882, 0.803922, 0.937255, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0705882, 0.803922, 0.937255, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.984314, 0.00784314, 0.00784314, 1 )
+
+[node name="MenuGameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+menu_inicio = "res://juego/menus/MenuInicio.tscn"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Fondo" parent="." instance=ExtResource( 6 )]
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -256.0
+margin_top = 57.0
+margin_right = 264.0
+margin_bottom = 177.0
+custom_fonts/font = SubResource( 2 )
+text = "GAME OVER"
+align = 1
+valign = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -108.0
+margin_top = -140.0
+margin_right = 337.0
+margin_bottom = 171.0
+
+[node name="BotonReintentar" type="Button" parent="VBoxContainer"]
+margin_right = 445.0
+margin_bottom = 98.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/normal = ExtResource( 4 )
+text = "Reintentar"
+
+[node name="BotonMenuPrincipal" type="Button" parent="VBoxContainer"]
+margin_top = 102.0
+margin_right = 445.0
+margin_bottom = 200.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 4 )
+custom_styles/normal = ExtResource( 4 )
+text = "Menu principal"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+margin_top = 204.0
+margin_right = 445.0
+margin_bottom = 208.0
+
+[node name="BotonSalir" type="Button" parent="VBoxContainer"]
+margin_top = 212.0
+margin_right = 445.0
+margin_bottom = 311.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/normal = ExtResource( 3 )
+text = "Salir"
+
+[node name="GodotinSad" type="Sprite" parent="."]
+position = Vector2( 234, 350 )
+scale = Vector2( 1.0339, 1.04676 )
+texture = ExtResource( 8 )
+
+[node name="BotonHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -20.0
+bus = "SFX"
+
+[node name="GameOverMusica" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -5.244
+bus = "Musica"
+
+[connection signal="mouse_entered" from="VBoxContainer/BotonReintentar" to="." method="_on_BotonReintentar_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/BotonReintentar" to="." method="_on_BotonReintentar_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/BotonMenuPrincipal" to="." method="_on_BotonMenuPrincipal_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/BotonMenuPrincipal" to="." method="_on_BotonMenuPrincipal_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/BotonSalir" to="." method="_on_BotonSalir_mouse_entered"]
+[connection signal="pressed" from="VBoxContainer/BotonSalir" to="." method="_on_BotonSalir_pressed"]

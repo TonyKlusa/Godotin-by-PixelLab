@@ -2,11 +2,8 @@
 
 [ext_resource path="res://recursos/modelos/monedas/gold.material" type="Material" id=1]
 [ext_resource path="res://recursos/modelos/monedas/wood.material" type="Material" id=2]
-[ext_resource path="res://juego/SFX/MonedaConsumida.wav" type="AudioStream" id=3]
-[ext_resource path="res://juego/items/MonedaDorada.gd" type="Script" id=4]
-
-[sub_resource type="ConvexPolygonShape" id=2]
-points = PoolVector3Array( -0.173205, 0.1, -0.05, 0, 0, -0.05, -0.173205, 0.1, 0.05, -0.173205, 0.3, -0.05, 0, 0, 0.05, 0.173205, 0.1, -0.05, -0.173205, 0.3, 0.05, 0, 0.4, -0.05, 0.173205, 0.1, 0.05, 0.173205, 0.3, -0.05, 0, 0.4, 0.05, 0.173205, 0.3, 0.05 )
+[ext_resource path="res://juego/items/MonedaDorada.gd" type="Script" id=3]
+[ext_resource path="res://recursos/audio/sfx/moneda_3.wav" type="AudioStream" id=4]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "coinGold_Mesh coinGold"
@@ -34,6 +31,9 @@ surfaces/1 = {
 "skeleton_aabb": [  ],
 "vertex_count": 120
 }
+
+[sub_resource type="ConvexPolygonShape" id=2]
+points = PoolVector3Array( -0.173205, 0.1, -0.05, 0, 0, -0.05, -0.173205, 0.1, 0.05, -0.173205, 0.3, -0.05, 0, 0, 0.05, 0.173205, 0.1, -0.05, -0.173205, 0.3, 0.05, 0, 0.4, -0.05, 0.173205, 0.1, 0.05, 0.173205, 0.3, -0.05, 0, 0.4, 0.05, 0.173205, 0.3, 0.05 )
 
 [sub_resource type="Animation" id=3]
 length = 0.001
@@ -73,18 +73,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [ false ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath(".:translation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0.147412, 0 ) ]
-}
 
 [sub_resource type="Animation" id=4]
 resource_name = "activada"
@@ -101,109 +89,60 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Vector3( 0, 0, 0 ), Vector3( 0, 180, 0 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 1, 1, 1 ), Vector3( 0.8, 0.8, 0.8 ), Vector3( 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:translation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.0757132, 0 ), Vector3( 0, 0, 0 ) ]
-}
 
 [sub_resource type="Animation" id=5]
 resource_name = "consumida"
-length = 0.2
+length = 0.3
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 180, 0 ) ]
+"values": [ Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector3( 1, 1, 1 ), Vector3( 0, 0, 0 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.2 ),
+"times": PoolRealArray( 0.3 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
 "method": "queue_free"
 } ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("AudioStreamPlayer3D:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+tracks/2/type = "value"
+tracks/2/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ true, false ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath(".:translation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector3( 0, 0, 0 ), Vector3( 0, 0.147412, 0 ) ]
+"values": [ true ]
 }
 
 [node name="MonedaDorada" type="Area"]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.147412, 0 )
 collision_layer = 0
-script = ExtResource( 4 )
-
-[node name="Colisionador" type="CollisionShape" parent="."]
-shape = SubResource( 2 )
+script = ExtResource( 3 )
 
 [node name="tmpParent" type="Spatial" parent="."]
 
 [node name="coinGold" type="MeshInstance" parent="tmpParent"]
 mesh = SubResource( 1 )
+
+[node name="Colisionador" type="CollisionShape" parent="."]
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "activada"
@@ -212,6 +151,7 @@ anims/activada = SubResource( 4 )
 anims/consumida = SubResource( 5 )
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource( 4 )
+bus = "SFX"
 
-[connection signal="body_entered" from="." to="." method="_on_MonedaDorada_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

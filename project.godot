@@ -10,19 +10,34 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "AnimationTree",
-"class": "ArbolAnimacionPlayer",
+"class": "ArbolDeAnimacionPlayer",
 "language": "GDScript",
-"path": "res://juego/player/ArbolAnimacion.gd"
+"path": "res://juego/player/ArbolDeAnimacion.gd"
+}, {
+"base": "Resource",
+"class": "DatosAjustesGuardado",
+"language": "GDScript",
+"path": "res://juego/almacenamiento/DatosAjustesGuardado.gd"
+}, {
+"base": "Resource",
+"class": "DatosUsuarioGuardado",
+"language": "GDScript",
+"path": "res://juego/almacenamiento/DatosUsuarioGuardado.gd"
 }, {
 "base": "KinematicBody",
 "class": "Godotin",
 "language": "GDScript",
 "path": "res://juego/player/Godotin.gd"
 }, {
-"base": "Area",
-"class": "Moneda",
+"base": "Node",
+"class": "GuardarCargar",
 "language": "GDScript",
-"path": "res://juego/items/MonedaOro.gd"
+"path": "res://juego/almacenamiento/GuardarCargar.gd"
+}, {
+"base": "Control",
+"class": "MenuAjustes",
+"language": "GDScript",
+"path": "res://juego/menus/MenuAjustes.gd"
 }, {
 "base": "Area",
 "class": "MonedaDorada",
@@ -30,31 +45,43 @@ _global_script_classes=[ {
 "path": "res://juego/items/MonedaDorada.gd"
 }, {
 "base": "Area",
+"class": "PortalNivel",
+"language": "GDScript",
+"path": "res://juego/objetos/Portal.gd"
+}, {
+"base": "Area",
 "class": "Sierra",
 "language": "GDScript",
 "path": "res://juego/objetos/danio/Sierra.gd"
 } ]
 _global_script_class_icons={
-"ArbolAnimacionPlayer": "",
+"ArbolDeAnimacionPlayer": "",
+"DatosAjustesGuardado": "",
+"DatosUsuarioGuardado": "",
 "Godotin": "",
-"Moneda": "",
+"GuardarCargar": "",
+"MenuAjustes": "",
 "MonedaDorada": "",
+"PortalNivel": "",
 "Sierra": ""
 }
 
 [application]
 
-config/name="Klusacek-Godotech"
+config/name="Klusacek_Godotech"
 config/description="Godotech es un proyecto dentro del programa del Informatorio 2022"
-run/main_scene="res://juego/niveles/NivelTest.tscn"
+run/main_scene="res://juego/menus/MenuPresentacion.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Godotin"
 config/icon="res://icono.png"
 
 [autoload]
 
-Eventos="*res://juego/autoload/Eventos.gd"
-DatosJuego="*res://juego/autoload/DatosJuego.gd"
-DatosConfiguracion="*res://juego/autoload/DatosConfiguracion.gd"
-CargaSegundoPlano="*res://juego/autoload/CargaSegundoPlano.tscn"
+Eventos="*res://juego/autoloads/Eventos.gd"
+DatosJuego="*res://juego/autoloads/DatosJuego.gd"
+DatosConfiguracion="*res://juego/autoloads/DatosConfiguracion.gd"
+CargaSegundoPlano="*res://juego/autoloads/CargaSegundoPlano.tscn"
+MusicaGlobal="*res://juego/autoloads/MusicaGlobal.tscn"
 
 [display]
 
@@ -67,10 +94,14 @@ window/stretch/aspect="keep"
 
 [input]
 
-ui_end={
+ui_cancel={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777230,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
-, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+ ]
+}
+saltar={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 mov_derecha={
@@ -95,12 +126,12 @@ mov_atras={
 }
 disparar={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
-saltar={
+pausa={
 "deadzone": 0.5,
-"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
 
@@ -109,7 +140,6 @@ saltar={
 3d_physics/layer_1="Player"
 3d_physics/layer_2="Plataformas"
 3d_physics/layer_3="Mundo"
-3d_physics/layer_4="Danio"
 
 [physics]
 

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/videoplayback.ogg-ba8357464a3663957ce1f571db306a56.oggstr"
+
+[deps]
+
+source_file="res://juego/SFX/videoplayback.ogg"
+dest_files=[ "res://.import/videoplayback.ogg-ba8357464a3663957ce1f571db306a56.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
