@@ -50,7 +50,7 @@ func cargar_hilo(nivel: String) -> void:
 	#print(recurso)
 
 func carga_completa(recurso: Resource) -> void:
-	$AnimationPlayer.play("titilar")
+	$AnimationPlayer.play("blink")
 	hilo.wait_to_finish()
 	escena_precargada = recurso.instance()
 	puede_iniciar = true

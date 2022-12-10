@@ -10,11 +10,6 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "AnimationTree",
-"class": "ArbolAnimacionPlayer",
-"language": "GDScript",
-"path": "res://juego/player/ArbolAnimacion.gd"
-}, {
-"base": "AnimationTree",
 "class": "ArbolDeAnimacionPlayer",
 "language": "GDScript",
 "path": "res://juego/player/ArbolDeAnimacion.gd"
@@ -45,11 +40,6 @@ _global_script_classes=[ {
 "path": "res://juego/menus/MenuAjustes.gd"
 }, {
 "base": "Area",
-"class": "Moneda",
-"language": "GDScript",
-"path": "res://juego/items/MonedaOro.gd"
-}, {
-"base": "Area",
 "class": "MonedaDorada",
 "language": "GDScript",
 "path": "res://juego/items/MonedaDorada.gd"
@@ -65,14 +55,12 @@ _global_script_classes=[ {
 "path": "res://juego/objetos/danio/Sierra.gd"
 } ]
 _global_script_class_icons={
-"ArbolAnimacionPlayer": "",
 "ArbolDeAnimacionPlayer": "",
 "DatosAjustesGuardado": "",
 "DatosUsuarioGuardado": "",
 "Godotin": "",
 "GuardarCargar": "",
 "MenuAjustes": "",
-"Moneda": "",
 "MonedaDorada": "",
 "PortalNivel": "",
 "Sierra": ""

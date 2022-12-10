@@ -49,6 +49,7 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0
 
 [node name="BloqueCesped" parent="Bloques" index="0" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.5, -5.5 )
+visible = false
 
 [node name="block" parent="Bloques/BloqueCesped/tmpParent" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9376, -2.20524, 10.9308 )
@@ -89,10 +90,7 @@ transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.1098
 [node name="Plataforma_Cesped_12x18" parent="Bloques" index="12" instance=ExtResource( 7 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12.988, 2.80601, 11.8978 )
 
-[node name="MonedaDorada" parent="ContenedorMonedas" index="0" instance=ExtResource( 4 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.5, 3.5, -5 )
-
-[node name="MonedaDorada2" parent="ContenedorMonedas" index="1" instance=ExtResource( 4 )]
+[node name="MonedaDorada2" parent="ContenedorMonedas" index="0" instance=ExtResource( 4 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.78124, 4.49496, -0.580434 )
 
 [node name="Sierra" parent="ContenedorSierras" index="0" instance=ExtResource( 5 )]

@@ -6,6 +6,6 @@
 script = ExtResource( 1 )
 vidas = 3
 monedas_oro = 0
-nivel_actual = "res://juego/niveles/Nivel1.tscn"
-num_nivel_actual = 1
-nivel_proximo = "res://juego/niveles/Nivel2.tscn"
+nivel_actual = "res://juego/niveles/Nivel2.tscn"
+num_nivel_actual = 2
+nivel_proximo = "res://juego/menus/MenuVictoria.tscn"
